@@ -1,0 +1,201 @@
+[
+  {
+    "engVal": "Blackberry",
+    "type": 0,
+    "engDefs": [
+      {
+        "val": [
+          "A small, soft black or dark purple fruit"
+        ],
+        "rusValues": [
+          "Ежевика"
+        ],
+        "engSentences": [
+          "She was very beautiful, and her lipstick was the color of a blackberry bruise."
+        ],
+        "imgUrl": "https://d2ce9r2khtuixp.cloudfront.net/img/words-set/new-user-set/blackberry.jpg"
+      }
+    ]
+  },
+  {
+    "engVal": "Butterfly",
+    "type": 0,
+    "engDefs": [
+      {
+        "val": [
+          "An insect with large colourful wings and a thin body"
+        ],
+        "rusValues": [
+          "Бабочка",
+          "Мотылёк"
+        ],
+        "engSentences": [
+          "There is nothing in a caterpillar that tells you it\u0027s going to be a butterfly.",
+          "Float like a butterfly, sting like a bee. Muhammad Ali"
+        ],
+        "imgUrl": "https://d2ce9r2khtuixp.cloudfront.net/img/words-set/new-user-set/butterfly.jpg"
+      }
+    ]
+  },
+  {
+    "engVal": "Endure",
+    "type": 10,
+    "engDefs": [
+      {
+        "val": [
+          "To remain firm under suffering or misfortune without yielding",
+          "To continue to exist without any loss in quality or importance"
+        ],
+        "rusValues": [
+          "Вынести",
+          "Выдержать",
+          "Вытерпеть",
+          "Терпеть"
+        ],
+        "engSentences": [
+          "We live in our fantasies and endure our realities.",
+          "It is easier to find men who will volunteer to die, than to find those who are willing to endure pain with patience."
+        ],
+        "imgUrl": "https://d2ce9r2khtuixp.cloudfront.net/img/words-set/new-user-set/endure.jpg"
+      }
+    ]
+  },
+  {
+    "engVal": "Galaxy",
+    "type": 0,
+    "engDefs": [
+      {
+        "val": [
+          "An extremely large group of stars and planets that extends over many billions of light years.",
+          "Any of the very large groups of stars and associated matter that are found throughout the universe"
+        ],
+        "rusValues": [
+          "Галактика"
+        ],
+        "engSentences": [
+          "Our galaxy, the Milky Way, is one of 50 or 100 billion other galaxies in the universe."
+        ],
+        "imgUrl": "https://d2ce9r2khtuixp.cloudfront.net/img/words-set/new-user-set/galaxy.jpg"
+      }
+    ]
+  },
+  {
+    "engVal": "Island",
+    "type": 0,
+    "engDefs": [
+      {
+        "val": [
+          "A piece of land that is completely surrounded by water."
+        ],
+        "rusValues": [
+          "Остров"
+        ],
+        "engSentences": [
+          "There is more treasure in books than in all the pirate\u0027s loot on Treasure Island. Walt Disney",
+          "We live on an island surrounded by a sea of ignorance. As our island of knowledge grows, so does the shore of our ignorance."
+        ],
+        "imgUrl": "https://d2ce9r2khtuixp.cloudfront.net/img/words-set/new-user-set/island.jpg"
+      }
+    ]
+  },
+  {
+    "engVal": "Kindness",
+    "type": 0,
+    "engDefs": [
+      {
+        "val": [
+          "The quality of being gentle, caring, and helpful"
+        ],
+        "rusValues": [
+          "Человеколюбие",
+          "Доброта",
+          "Благожелательность",
+          "Мягкосердечие"
+        ],
+        "engSentences": [
+          "Kindness is the language which the deaf can hear and the blind can see. Mark Twain",
+          "A warm smile is the universal language of kindness."
+        ],
+        "imgUrl": "https://d2ce9r2khtuixp.cloudfront.net/img/words-set/new-user-set/kindness.jpg"
+      }
+    ]
+  },
+  {
+    "engVal": "Lion",
+    "type": 0,
+    "engDefs": [
+      {
+        "val": [
+          "A large wild member of the cat family that is found in Africa."
+        ],
+        "rusValues": [
+          "Лев"
+        ],
+        "engSentences": [
+          "I am not afraid of an army of lions led by a sheep; I am afraid of an army of sheep led by a lion. Alexander the Great",
+          "A lion is called a \u0027king of beasts\u0027 obviously for a reason."
+        ],
+        "imgUrl": "https://d2ce9r2khtuixp.cloudfront.net/img/words-set/new-user-set/lion.jpg"
+      }
+    ]
+  },
+  {
+    "engVal": "Symphony",
+    "type": 0,
+    "engDefs": [
+      {
+        "val": [
+          "A piece of music written to be played by an orchestra"
+        ],
+        "rusValues": [
+          "Симфония",
+          "Гармония"
+        ],
+        "engSentences": [
+          "You can\u0027t play a symphony alone, it takes an orchestra to play it.",
+          "I\u0027m like any other composer. If you give me five years to write a symphony, I\u0027m still going to be asking for more time two days before it\u0027s due."
+        ],
+        "imgUrl": "https://d2ce9r2khtuixp.cloudfront.net/img/words-set/new-user-set/symphony.jpg"
+      }
+    ]
+  },
+  {
+    "engVal": "Universe",
+    "type": 0,
+    "engDefs": [
+      {
+        "val": [
+          "The whole of space and all the stars, planets, and other forms of matter and energy in it"
+        ],
+        "rusValues": [
+          "Вселенная",
+          "Мир",
+          "Космос"
+        ],
+        "engSentences": [
+          "Early astronomers thought that our planet was the centre of the universe.",
+          "You, yourself, as much as anybody in the entire universe, deserve your love and affection. Buddha"
+        ],
+        "imgUrl": "https://d2ce9r2khtuixp.cloudfront.net/img/words-set/new-user-set/universe.jpg"
+      }
+    ]
+  },
+  {
+    "engVal": "Whale",
+    "type": 0,
+    "engDefs": [
+      {
+        "val": [
+          "Very large mammals that live in the sea"
+        ],
+        "rusValues": [
+          "Кит"
+        ],
+        "engSentences": [
+          "A life-size installation of a giant blue whale has been erected on the Left Bank of the Seine, intended as a reminder to negotiators at the international climate conference here that the fate of threatened species is also in their hands"
+        ],
+        "imgUrl": "https://d2ce9r2khtuixp.cloudfront.net/img/words-set/new-user-set/whale.jpg"
+      }
+    ]
+  }
+]

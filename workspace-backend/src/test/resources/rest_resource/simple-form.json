@@ -1,0 +1,20 @@
+{
+  "word": {
+    "engVal": "name",
+    "engDefs": [
+      {
+        "val": ["eng_def"],
+        "rusValues": [
+          "слово для теста"
+        ],
+        "engSentences": [
+          "She broke the cup when she dropped it on the floor [ test ]"
+        ],
+        "imageBLOB": {}
+      }
+    ],
+    "type": "10"
+  },
+  "prevEngVal": "",
+  "currentDayYear": {"dayOfYear":121, "year":2121}
+}

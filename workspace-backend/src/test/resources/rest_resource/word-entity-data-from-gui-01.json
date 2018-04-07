@@ -1,0 +1,32 @@
+{
+  "word": {
+    "engVal": "break_app_test test",
+    "engDefs": [
+      {
+        "val": ["to separate (something) into parts or pieces often in a sudden and forceful or violent way"],
+        "rusValues": [
+          "ломать",
+          "разбивать"
+        ],
+        "engSentences": [
+          "She broke the cup when she dropped it on the floor [ test ]",
+          "Break the chocolate bar into pieces so that everyone can have some [ test ]"
+        ],
+        "imageBLOB": {}
+      },
+      {
+        "val": ["to open suddenly especially because of pressure from inside", "break_def-2-2"],
+        "rusValues": [
+          "разрываться"
+        ],
+        "engSentences": [
+          "A bruise forms when a blood vessel breaks under the skin [ test ]"
+        ],
+        "imageBLOB": {}
+      }
+    ],
+    "type": "10"
+  },
+  "prevEngVal": "",
+  "currentDayYear": {"dayOfYear":121, "year":2121}
+}

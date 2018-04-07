@@ -1,0 +1,27 @@
+{
+  "word": {
+    "engVal": "breaK_app_test test",
+    "engDefs": [
+      {
+        "val": ["to separate (something) into parts or pieces often in a sudden and forceful or violent way", "engDef-val-2"],
+        "rusValues": [
+          "ломать_edit",
+          "разбивать_edit",
+          "разбивать_edit1",
+          "разбивать_edit2"
+        ],
+        "engSentences": [
+          "[She broke the cup when she dropped it on the floor]_edit [ test ]",
+          "[Break the chocolate bar into pieces so that everyone can have some]_edit [ test ]",
+          "sentence_1 [ test ]",
+          "sentence_2 [ test ]",
+          "sentence_3 [ test ]"
+        ],
+        "imageBLOB": {}
+      }
+    ],
+    "type": "20"
+  },
+  "prevEngVal": "break_app_test",
+  "currentDayYear": {"dayOfYear":121, "year":2121}
+}
