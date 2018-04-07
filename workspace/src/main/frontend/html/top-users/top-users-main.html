@@ -1,0 +1,38 @@
+<div style="padding-left: 7px; padding-right: 7px;">
+<div class="row" style="padding: 20px; border-radius: 10px; border: 4px solid darkcyan;background-color: white">
+
+
+    <div class="row text-center" style="font-size: 18px;" ng-if="topUsers[0].length > 0">
+        <top-user-header title="ЛИДЕРЫ ЗА ДЕНЬ"></top-user-header>
+    </div>
+    <div class="row" ng-if="topUsers[0].length > 0">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2" ng-repeat="topUser in topUsers[0]">
+            <top-user top-user="topUser"></top-user>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+
+    <div class="text-center" style="font-size: 18px; margin-top: 25px;" ng-if="topUsers[1].length > 0">
+        <top-user-header title="ЛИДЕРЫ ЗА НЕДЕЛЮ"></top-user-header>
+    </div>
+    <div class="row" ng-if="topUsers[1].length > 0">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2" ng-repeat="topUser in topUsers[1]">
+            <top-user top-user="topUser"></top-user>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+
+    <div class="text-center" style="font-size: 18px; margin-top: 25px;" ng-if="topUsers[2].length > 0">
+        <top-user-header title="ЛИДЕРЫ ЗА {{currentMonth}}"></top-user-header>
+    </div>
+    <div class="row" ng-if="topUsers[2].length > 0">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2" ng-repeat="topUser in topUsers[2]">
+            <top-user top-user="topUser"></top-user>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>
+</div>

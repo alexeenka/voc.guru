@@ -1,0 +1,38 @@
+<div class="row">
+    Speech support:
+    <button class="btn btn-success" ng-click="devSpeechCheck()">CHECK</button> Result: {{devSpeechSupport}}
+</div>
+<br>
+<br>
+<div class="row" style="background-color: rgba(91, 192, 222, 0.21); padding: 10px; border-radius: 10px;">
+    Voices:
+    <button class="btn btn-success" ng-click="getVoices()">getVoices</button>
+    <br>
+    Result:
+
+    <pre ng-repeat="iVoice in devVoices">
+        [{{$index}}]
+        Name: {{iVoice.name}}
+        Lang: {{iVoice.lang}}
+        VoiceURI: {{iVoice.voiceURI}}
+        LocalService: {{iVoice.localService}}
+        Default: {{iVoice.default}}
+    </pre>
+
+
+</div>
+
+<br>
+<br>
+<div class="row" style="background-color: rgba(222, 92, 138, 0.21); padding: 10px; border-radius: 10px;">
+    Speak:
+    <button class="btn btn-success" ng-click="speak()">Speak</button> Number <input type="text" ng-model="engNumber">
+    <br>
+</div>
+<br>
+<br>
+<div class="row" style="background-color: rgba(66, 48, 222, 0.21); padding: 10px; border-radius: 10px;">
+    Speak RU:
+    <button class="btn btn-success" ng-click="speakRu()">Speak RU</button> Number <input type="text" ng-model="ruNumber">
+    <br>
+</div>

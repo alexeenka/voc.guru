@@ -1,0 +1,165 @@
+<div class="row">
+    <div class="col-sm-2">
+        <div style="font-size: 17px; background-color: rgb(245, 245, 245); border-radius: 5px; text-align: center;" ng-show="training.state != 'saving'">
+            <span style="margin-left: 8px;">
+                {{training.type}}
+                <span class="glyphicon glyphicon-remove-circle" style="color: #e3a1a1; margin-left: 5px; cursor: pointer" tooltip-placement="bottom" uib-tooltip="Прервать тренировку" tooltip-append-to-body="true" ng-click="training.toNone()"></span>
+            </span>
+        </div>
+    </div>
+    <div class="col-sm-8" style="margin-top: 7px;">
+        <div class="thumbnail" ng-style="{'min-height' : (training.state == 'saving') ? '250px' : '400px'}"
+             ng-class="{
+             'training_rw_border':training.state == 'started' && training.isRepeatedWord(),
+             'training_tw_border':training.state == 'started' && !training.isRepeatedWord(),
+             'training_finish_border' : training.state == 'finish'}"
+        >
+            <div class="caption" ng-if="training.state == 'started'">
+                <div class="row" style="margin-bottom: 5px;">
+                    <span style="float: left; margin-left: 10px;">
+                        <span class="badge" style="font-size: 14px;">{{workout.wordIndex + 1}}/10</span>
+                    </span>
+                    <span style="float: right; margin-right: 10px;">
+                        <span class="label score_base training_score_section" ng-class="{'score_in_progress':!workout.show_answer_state, 'score_final':workout.show_answer_state}">
+                            <span ng-if="!training.isRepeatedWord()">
+                              <span>Pts: </span>
+                              <span ng-show="!workout.show_answer_state">{{workout.currentWord.trainingValue.p}} + <span style="color: yellow">{{workout.currentPoints}}</span> = </span>
+                              <span ng-class="{'color_yellow':!workout.show_answer_state}">{{workout.currentWord.trainingValue.p + workout.currentPoints}}</span>
+                              <span> из 150</span>
+                              <span class="glyphicon glyphicon-fire" style="color: #ffed00;" ng-repeat="n in [].constructor(workout.currentWord.trainingValue.s) track by $index" ng-if="!workout.show_answer_state"></span>
+                              <span class="glyphicon glyphicon-fire" style="color: #ffed00;" ng-repeat="n in [].constructor(training.lastWordResult().tv.s) track by $index" ng-if="workout.show_answer_state"></span>
+                            </span>
+                            <span ng-if="training.isRepeatedWord()">
+                                <span ng-if="workout.show_answer_state">
+                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                    <span style="font-size: 12px;">next repeat after {{training.nextRepeatDay(training.lastWordResult())}}</span>
+                                </span>
+
+                                <span ng-if="!workout.show_answer_state">
+                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                    <span style="font-size: 12px;">last repeat: {{workout.currentWord.repeatWordValue.date}}</span>
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                </div>
+                <div class="row text-center" style="height: 27px;">
+                    <button type="button" class="btn btn-success btn-lg" ng-click="checkAnswer()"
+                            ng-if="!workout.show_answer_state">
+                        &nbsp;&nbsp;Answer&nbsp;&nbsp;
+                    </button>
+                    <button type="button" class="btn btn-default btn-lg" style="color: #737373" ng-click="training.giveUp()"
+                            ng-if="!workout.show_answer_state">Give up
+                    </button>
+
+                    <button id="{{trainingName}}_workoutButtonNext" type="button" class="btn btn-success btn-lg"
+                            ng-if="workout.show_next_button && !workout.lastWord()" ng-click="nextTrainingWord()">Next
+                    </button>
+                    <button id="{{trainingName}}_workoutButtonFinish" type="button" class="btn btn-success btn-lg"
+                            ng-if="workout.show_next_button && workout.lastWord()"
+                            ng-click="training.finishWorkout()">Finish
+                    </button>
+                    <p id="{{trainingName}}_training_msg" style="display:none; font-family: 'Lobster',cursive; font-size: 25px; border-radius: 5px; position: relative; z-index: 100"></p>
+                </div>
+                <ng-include src="html_templates.workout_key"></ng-include>
+                <div class="row has-success" ng-class="training.isMobileTraining() ? 'margin_top_10px' : 'margin_top_30px'"
+                     ng-show="!workout.show_answer_state">
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-10">
+                        <input id="{{trainingName}}_userAnswer" type="text" class="form-control input-lg" style="text-align: center;" ng-model="workout.userAnswer" press-enter="checkAnswer()">
+                    </div>
+                    <div class="col-sm-1">
+                    </div>
+                </div>
+                <ng-include ng-show="workout.show_answer_state" src="html_templates.answer_in_answer_state"></ng-include>
+                <!-- letters -->
+                <div class="row text-center" ng-show="(workout.usedHint1stLetter || workout.usedHint2ndLetter) && !workout.show_answer_state">
+                    <p class="input-lg text-center">
+                        <span ng-repeat="obj in workout.hintAnswer track by $index" >
+                            <span class="fa fa-minus" ng-if="obj == '-'"></span>
+                            <span class="glyphicon glyphicon-asterisk" ng-if="obj == '*'"></span>
+                            <span class="glyphicon glyphicon-asterisk" ng-if="obj == ' '" style="color: white"></span>
+                            <span ng-if="!training.isShowedSymbol4Hint(obj)">{{obj}}</span>
+                        </span>
+                    </p>
+                </div>
+                <!-- definition -->
+                <training-hint ng-if="workout.usedHintDefinition" values="workout.currentWord.engDefs" label="Definitions"></training-hint>
+                <!-- picture -->
+                <ng-include ng-if="html_templates.include_hint_picture" src="'/html/training/workout-template/hint-picture.html'"></ng-include>
+                <!-- hint-list -->
+                <ng-include src="html_templates.hint_list"></ng-include>
+            </div>
+            <div class="caption" ng-show="training.state == 'saving'">
+                <div style="width: 250px; margin-left: auto; margin-right: auto; font-family: 'Source Sans Pro', serif; font-size: 20px;">cохраняем результаты...<span ng-if="training.saveAttempt > 0"> &nbsp;({{training.saveAttempt}})</span></div>
+                <div class="row text-center" style="margin-top: 20px;">
+                    <img id="{{trainingName}}_saving_brain" src="https://d2ce9r2khtuixp.cloudfront.net/img/brain_color.png">
+                </div>
+            </div>
+            <div class="caption" ng-show="training.state == 'finish'">
+                <div class="row" style="padding-left: 15px; padding-right: 15px">
+                    <div class="col-xs-2 text-center" style="padding-left: 0; padding-right: 0">
+                        <i class="fa fa-star" aria-hidden="true" style="padding: 3px; color: #ffe321"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="padding: 3px; color: gold"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="padding: 3px; color: orange"></i>
+                    </div>
+                    <div class="col-xs-8 text-center" style="padding-left: 0; padding-right: 0; font-family: 'Marck Script',cursive; font-size: 22px;">
+                        {{training.userName}}, ваши результаты за тренировочную сессию
+                    </div>
+                    <div class="col-xs-2 text-center" style="padding-left: 0; padding-right: 0;">
+                        <i class="fa fa-star" aria-hidden="true" style="padding: 3px; color: orange"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="padding: 3px; color: gold"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="padding: 3px; color: #ffe321"></i>
+                    </div>
+                </div>
+
+                <div class="training_finish_space">
+                    <div class="row training_finish_table_header training_finish_row training_finish_odd training_finish_odd_bg">
+                        <div class="col-xs-6">Word</div>
+                        <div class="col-xs-2">Points</div>
+                        <div class="col-xs-4">Total</div>
+                    </div>
+                    <div class="row training_finish_row" ng-repeat="obj in workout.wordsResult track by $index"
+                         ng-class="{
+                             'bg-success':training.isWordStudied(obj),
+                             'training_finish_odd':$index % 2 == 1,
+                             'training_finish_odd_bg':($index % 2 == 1) && !training.isWordStudied(obj)
+                         }"
+                    >
+                        <div class="col-xs-6">{{$index + 1}}. {{obj.w}}</div>
+                        <!-- Begin. Show only for training values. -->
+                        <div class="col-xs-2" ng-if="obj.rv == null">
+                            <span>{{obj.tv.p - workout.words[$index].trainingValue.p}}</span>
+                            <span ng-if="obj.tv.s > 0"><span class="glyphicon glyphicon-fire" style="color: #ff9800;"></span></span>
+                        </div>
+                        <div class="col-xs-4" ng-if="obj.rv == null">
+                            <!-- Points and fire-signs when word in process -->
+                            <span ng-if="obj.tv.s < 5">
+                                {{obj.tv.p}} / 150
+                                <span class="glyphicon glyphicon-fire" style="color: #ff9800;" ng-repeat="n in [].constructor(obj.tv.s) track by $index"></span>
+                            </span>
+                            <!-- Fire-signs when word has needed streak -->
+                            <span ng-if="obj.tv.s >= 5">
+                                    <span class="glyphicon glyphicon-fire" style="color: #FF5722;" ng-repeat="n in [].constructor(5) track by $index"></span>
+                            </span>
+                            <!-- Thump_up when word is completely studied -->
+                            <span ng-if="training.isWordStudied(obj)" class="glyphicon glyphicon-thumbs-up training_result_thump_up"></span>
+                        </div>
+                        <!-- End. Show only for training values. -->
+                        <!-- Begin. Show only for repeated values. -->
+                        <div class="col-xs-6" ng-if="obj.rv != null">
+                            Next repeat after {{obj.tv.p  == 10 ? obj.rv.period * 2 : obj.rv.period}} days.
+                        </div>
+                        <!-- End. Show only for repeated values. -->
+                    </div>
+                </div>
+                <div class="text-center margin_top_15px">
+                    <button type="button" class="btn btn-success" ng-click="training.toNone()">Закончить</button>
+                    <button id="{{trainingName}}_repeatWorkoutButton" type="button" class="btn btn-success" ng-click="training.restartTraining()">Еще разик</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>

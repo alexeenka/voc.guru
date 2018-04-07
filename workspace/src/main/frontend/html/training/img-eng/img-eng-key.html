@@ -1,0 +1,10 @@
+<div class="row text-center" ng-class="training.isMobileTraining() ? 'margin_top_25px' : 'margin_top_70px'">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-10">
+        <img id="img-eng-training-key-img-id" ng-src="{{workout.currentWord.picURL}}" img-err-src="https://d2ce9r2khtuixp.cloudfront.net/img/broken-img-url.png" style="max-width: 100%; max-height: 300px; z-index: -100"/>
+        <span ng-class="training.isMobileTraining() ? 'mobile_wordTypeDescPic' : 'wordTypeDesc'">{{workout.currentWord.wordTypeDesc}}</span>
+    </div>
+    <div class="col-sm-1">
+    </div>
+</div>

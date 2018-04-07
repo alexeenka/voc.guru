@@ -1,0 +1,43 @@
+<div class="modal-header text-center" style="font-size: 20px; background-color: cornsilk">
+    <div>
+        Add word: {{chosenWord}}
+        <button class="btn btn-default" type="button" style="float: right;font-size: 16px; color: rgb(102, 102, 102);padding: 3px 6px;" ng-click="closePopupWindow()" >
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+<div class="modal-body" style="background-color: black; border: 1px solid bisque;">
+
+    <div uib-carousel active="active" interval="0" no-wrap="false" style="min-height: 305px; margin-bottom: 10px">
+        <div uib-slide ng-repeat="word in wordsByAuthor track by $index" index="$index">
+            <div style="height: 200px">
+                <img ng-src="{{word.imgURL}}" style="margin:auto; max-height: 200px">
+            </div>
+            <div class="carousel-caption">
+                <h4>{{word.engVal}}</h4>
+                <p>{{word.engDevFav}}</p>
+                <p>{{word.rusValueFav}}</p>
+                <p style="background-color: darkgoldenrod; padding: 5px;">
+                    Made by
+                    <span>
+                            <img ng-src="{{word.author.profileImg}}" style="margin:auto; max-height: 40px; border-radius: 20%">
+                            {{word.author.name}}
+                            <a target="_blank" class="social_network_link vk_network_link btn h4t-login-vk" ng-attr-href="{{'https://vk.com/id' + word.author.vkuid}}" ng-if="word.author.vkuid > 0"><i class="fa fa-vk"></i></a>
+                            <a target="_blank" class="social_network_link fk_network_link btn h4t-login-facebook" ng-attr-href="{{'https://facebook.com/' + word.author.fbuid}}" ng-if="word.author.fbuid > 0"><i class="fa fa-facebook"></i></a>
+                            </span>
+                </p>
+                <p>
+                    <button class="btn btn-primary" ng-click="copyPopupWord(word.author.uid, word.engVal);">Добавить к себе</button>
+                </p>
+                <p ng-if="($index + 1) == words.length">
+                    <button class="btn btn-default" ng-click="nextSlideWords()">Загрузить другие слова</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer" style="background-color: cornsilk">
+    <div class="text-center">
+        <button class="btn btn-default" type="button" ng-click="closePopupWindow()">Закрыть</button>
+    </div>
+</div>

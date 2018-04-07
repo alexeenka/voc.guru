@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h3>Сохранить результаты тренинга не удалось</h3>
+</div>
+<div class="modal-body">
+    Похоже на то, что у вас нету подключения к интернету. Возможно вы в метро, дождитесь сигнала на телефоне и нажмите сохранить еще раз.
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="tryToSave()" ng-if="state == 'before'">Сохранить</button>
+    <h3 style="color: rgba(218, 218, 218, 0.99)" ng-if="state == 'in-progress'">Сохраняем!</h3>
+    <h3 style="color: green" ng-if="state == 'success'">Сохранено!</h3>
+</div>

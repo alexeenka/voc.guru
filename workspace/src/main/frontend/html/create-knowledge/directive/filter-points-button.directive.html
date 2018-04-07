@@ -1,0 +1,22 @@
+<div class="btn-group" uib-dropdown is-open="engFilterPoints.eng_rus.is_open">
+    <button id="single-button" type="button" class="btn btn-default btn-sm" uib-dropdown-toggle ng-disabled="disabled" style="background-color: #fefefe; padding-left: 1px; padding-right: 1px">
+        {{label}} <span class="caret"></span>
+    </button>
+    <ul class="uib-dropdown-menu" role="menu" aria-labelledby="single-button">
+        <li role="menuitem">
+            <a href="#" ng-click="pointsOption = 'all'">Все
+                <span ng-if="pointsOption == 'all'" class="glyphicon glyphicon-ok"></span>
+            </a>
+        </li>
+        <li role="menuitem">
+            <a href="#" ng-click="pointsOption = 'done'">Выучено
+                <span ng-if="pointsOption == 'done'" class="glyphicon glyphicon-ok"></span>
+            </a>
+        </li>
+        <li role="menuitem">
+            <a href="#" ng-click="pointsOption = 'progress'">Невыучено
+                <span ng-if="pointsOption == 'progress'" class="glyphicon glyphicon-ok"></span>
+            </a>
+        </li>
+    </ul>
+</div>

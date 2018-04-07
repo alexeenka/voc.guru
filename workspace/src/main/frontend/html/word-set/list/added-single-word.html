@@ -1,0 +1,16 @@
+<div class="modal-body" style="padding-left: 0; padding-right: 0;">
+    <div ng-if="added == 0">
+        <div class="text-center word_set_panel_added_word">
+            Слово '{{singleWord}}' уже у вас в словаре!
+        </div>
+    </div>
+    <div ng-if="added == 1">
+        <div class="text-center word_set_panel_added_word">
+            Слово '{{singleWord}}' добавлено в ваш словарь!
+        </div>
+    </div>
+    <img src="https://d2ce9r2khtuixp.cloudfront.net/img/words-set/word-set-added-ten.jpg" alt="" style="width: 100%"/>
+    <div class="text-center">
+        <button class="btn btn-default" style="margin-top: 10px;" type="button" ng-click="closePopupWindow()">Закрыть</button>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="modal-header friends_popup_header">
+    <div class="row text-center">
+        ВАШИ ДРУЗЬЯ ИЗ
+        <span style="font-weight: bold">
+            <span ng-if="friendsInfo.type == 'FACEBOOK'">FACEBOOK</span>
+            <span ng-if="friendsInfo.type == 'VK'">VK</span>
+        </span>,
+        ПОЛЬЗОВАТЕЛИ VOC.GURU
+    </div>
+</div>
+<div class="modal-body">
+    <div ng-if="isMobile()">
+        <ul class="pager" style="margin-bottom: 0;">
+            <li class="previous">
+                <a style="cursor: pointer" ng-if="friendsInfo.paging.previous" ng-click="modalPrevFriends()"><span aria-hidden="true">&larr;</span>&nbsp;Prev</a>
+                <!-- for element alignments -->
+                <div style="width: 77px; display: inline-block;" ng-if="!friendsInfo.paging.previous"></div>
+            </li>
+            <li><span>{{from}} ПО {{to}} ИЗ {{friendsInfo.summary.total_count}}</span></li>
+            <li class="next" >
+                <a style="cursor: pointer" ng-if="friendsInfo.paging.next" ng-click="modalNextFriends()">Next&nbsp;<span aria-hidden="true">&rarr;</span></a>
+                <!-- for element alignments -->
+                <div style="width: 77px; display: inline-block;" ng-if="!friendsInfo.paging.next"></div>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-if="friendsInfo.summary.total_count == 0">
+        <div class="text-center">
+            Мы не нашли ваших друзей из
+            <span style="font-weight: bold"><span ng-if="friendsInfo.type == 'FACEBOOK'">FACEBOOK</span><span ng-if="friendsInfo.type == 'VK'">VK</span></span>,
+            на сайте. Расскажите друзьям о voc.guru, вместе веселее :)
+        </div>
+    </div>
+    <div ng-if="friendsInfo.summary.total_count > 0">
+    <div class="row friends_popup_row"
+         ng-class="{'friends_popup_bottom_border' : $index + 1 < friendsInfo.data.length}"
+         ng-repeat="friend in friendsInfo.data track by friend.id">
+        <div class="col-sm-6 text-center">
+            <!-- https://developers.facebook.com/docs/graph-api/reference/user/picture/ -->
+            <img ng-src="https://graph.facebook.com/{{::friend.id}}/picture?width=100" alt="" class="friends_popup_img" ng-if="friendsInfo.type == 'FACEBOOK'"/>
+            <img ng-src="{{friend.profileImg}}" alt="" class="friends_popup_img" ng-if="friendsInfo.type == 'VK'"/>
+        </div>
+        <div class="col-sm-6 text-center friends_popup_name">
+            {{::friend.name}}
+            <div style="margin-top: 10px">
+                <button class="btn btn-default friends_popup_colors" ng-click="modalAddFriend(friend.id)">Добавить</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <ul class="pager" style="margin-bottom: 0;">
+            <li class="previous">
+                <a style="cursor: pointer" ng-if="friendsInfo.paging.previous" ng-click="modalPrevFriends()"><span aria-hidden="true">&larr;</span>&nbsp;Prev</a>
+                <!-- for element alignments -->
+                <div style="width: 77px; display: inline-block;" ng-if="!friendsInfo.paging.previous"></div>
+            </li>
+            <li><span>{{from}} ПО {{to}} ИЗ {{friendsInfo.summary.total_count}}</span></li>
+            <li class="next" >
+                <a style="cursor: pointer" ng-if="friendsInfo.paging.next" ng-click="modalNextFriends()">Next&nbsp;<span aria-hidden="true">&rarr;</span></a>
+                <!-- for element alignments -->
+                <div style="width: 77px; display: inline-block;" ng-if="!friendsInfo.paging.next"></div>
+            </li>
+        </ul>
+    </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="text-center">
+        <button class="btn btn-default friends_popup_close_button" type="button" ng-click="closeFriendsModal()">Закрыть</button>
+    </div>
+</div>

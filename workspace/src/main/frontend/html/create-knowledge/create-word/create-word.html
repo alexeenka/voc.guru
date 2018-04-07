@@ -1,0 +1,248 @@
+<form novalidate name="wordForm" id="wordForm">
+
+<div class="row text-center newWord_form_title">
+    <span ng-if="!prevEngVal" class="white-bg">Новое слово</span>
+    <span ng-if="prevEngVal" class="white-bg">Редактирование</span>
+</div>
+
+<div class="row text-center newWord_work_effort_text white-bg" ng-if="!prevEngVal">За каждое новое слово +5 мин к времени за день</div>
+
+<div class="row text-center form-group" style="margin-top: 20px;" ng-class="{'create-word-error-border has-error': (wordForm.$submitted && word.type == undefined)}">
+
+    <label class="control-label" style="position: relative;display: inline-block;padding-right: 9px;font-size: 14px;">Это</label>
+    <div class="btn-group" id="wordTypePartOfSpeech">
+        <label class="btn btn-primary" ng-model="word.type" btn-radio="0">Noun</label>
+        <label class="btn btn-primary" ng-model="word.type" btn-radio="10">Verb</label>
+        <label class="btn btn-primary" ng-model="word.type" btn-radio="20">Adjective</label>
+        <label class="btn btn-primary" ng-model="word.type" btn-radio="30">Adverb</label>
+    </div>
+    &nbsp;
+    <label class="control-label">или</label>
+    &nbsp;
+    <div class="btn-group" id="wordTypeOtherKnown">
+        <label class="btn btn-primary" ng-model="word.type" btn-radio="40">Phrasal verb</label>
+        <label class="btn btn-primary" ng-model="word.type" btn-radio="50">Idiom</label>
+    </div>
+    &nbsp;
+    <label class="control-label">или</label>
+    &nbsp;
+    <div class="btn-group" id="wordTypeOtherUnknown">
+        <label class="btn btn-primary" ng-model="word.type" btn-radio="60">Другое</label>
+    </div>
+
+</div>
+
+<div class="row text-center" ng-if="wordForm.$submitted && word.type == undefined" style="margin-top: -15px;">
+    <div  class="bg-danger h4t-form-error">Выберите, пожалуйста</div>
+</div>
+
+<div class="row">
+    <div class="form-group" ng-class="{'has-error': (wordForm.engVal.$touched || wordForm.$submitted) && wordForm.engVal.$invalid}">
+        <label class="control-label white-bg" for="engVal">Слово или фраза на английском</label>
+        <input ng-model="word.engVal" type="text" class="form-control" id="engVal" name="engVal" required ng-minlength="3" ng-maxlength="255"
+               eng-val-validator aria-describedby="engValHelp"
+               placeholder="Напишите слово или фразу на английском языке" style="background-color: #fdffca">
+
+        <div ng-if="autocompleteWords.length > 0" class="bg-warning newWord_auto_complete">
+            В <a ui-sref="global-voc({paramGVocSearchWord:word.engVal})" class="newWord_common_voc_link">общем словаре</a> есть следующие слова:&nbsp;<span
+                ng-repeat="iAutocompleteWord in autocompleteWords track by $index">"{{iAutocompleteWord}}"<span
+                ng-if="$index + 1 < autocompleteWords.length">,&nbsp;</span><span
+                ng-if="$index + 1 == autocompleteWords.length">.</span></span>
+        </div>
+
+        <div ng-if="wordForm.engVal.$touched || wordForm.$submitted" class="bg-danger h4t-form-error">
+            <span ng-if="wordForm.engVal.$error.engValFstLetter" class="h4t-form-font-margin">Первый символ должен быть буквой от A до Z.</span>
+            <span ng-if="wordForm.engVal.$error.required" class="h4t-form-font-margin">Введите слово или фразу, которую будете учить, пожалуйста</span>
+            <span ng-if="wordForm.engVal.$error.minlength" class="h4t-form-font-margin">Не принимаем слова меньше 3 символов ;)</span>
+            <span ng-if="wordForm.engVal.$error.maxlength" class="h4t-form-font-margin">Ооочень много букв, сгоните кота с клавиатуры :(</span>
+        </div>
+    </div>
+</div>
+
+<div class="row margin-top-bottom-10px">
+    <span class="label label-info" style="font-size: 18px;">!</span>
+    <span class="white-bg">
+        У слова может быть несколько определений! Для каждого определения нужно ввести русский перевод один или несколько,
+        предложения со значением слова как в определении, и соотвествующую картинку.
+    </span>
+</div>
+
+
+<div style="background-color: #e9e7e7; border-radius: 7px; margin-right: -15px; margin-left: -15px; margin-top: 15px;" ng-repeat="(keyDef, engDef) in word.engDefs track by $index">
+        <div class="row" style="margin-left: 0; margin-right: 0">
+            <div style="float: right; padding: 10px; font-size: 16px; cursor: pointer" ng-if="$index != 0" ng-click="removeEngDef(engDef)"><span class="glyphicon glyphicon-remove"/></div>
+
+            <div class="form-group text-center" ng-class="{'has-error': (wordForm['engDefForm_' + keyDef].$touched || wordForm.$submitted) && wordForm['engDefForm_' + keyDef].$invalid}" style="margin-top: 10px; margin-left: 15px; margin-right: 15px;">
+                <label class="control-label create-word-hint-4def" for="engDefsValues">Найди и напиши определение</label>
+
+                <div class="text-center create-word-hint-border">
+                    <a target="{{engVal() + '_collins'}}" class="btn h4t-fav-btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://www.collinsdictionary.com/dictionary/english/' + engValCollins() || undefined}}" style="font-size: 12px">Collins</a>
+                    <a target="{{engVal() + '_google_help'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://www.google.com/search?q=define:' + engVal() || undefined}}" style="font-size: 12px; padding-left: 6px; padding-right: 6px;">Google</a>
+                    <a target="{{engVal() + '_merriam-webster_help'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://www.merriam-webster.com/dictionary/' + engVal() || undefined}}" style="font-size: 12px">Merriam-Webster</a>
+                    <a target="{{engVal() + '_your_dictionary_help'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://www.yourdictionary.com/' + engVal() || undefined}}" style="font-size: 12px; padding-left: 6px; padding-right: 6px;">Your Dictionary</a>
+                    <a target="{{engVal() + '_urban_help'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://www.urbandictionary.com/define.php?term=' + engVal() || undefined}}" style="font-size: 12px">Urban</a>
+                    <a target="{{engVal() + '_idioms'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://idioms.thefreedictionary.com/' + engVal() || undefined}}" style="font-size: 12px">Idioms</a>
+                </div>
+
+                <div id="engDefsValues" ng-repeat="(keyEngDefSimilarVal, engDefSimilarVal) in engDef.val track by $index" aria-describedby="engDefinitionHelp">
+                    <ng-form name="engDefForm_{{keyEngDefSimilarVal}}">
+                        <div class="top5" ng-class="{'input-group' : engDef.val.length > 1}">
+                            <textarea ng-model="engDef.val[$index]" type="text" class="form-control" name="engDef" placeholder="Скопируйте определение слова или значение фразы" required ng-minlength="3" ng-maxlength="255" rows="2"></textarea>
+
+                            <span class="input-group-btn" ng-if="engDef.val.length > 1">
+                            <button class="btn btn-default" type="button" ng-click="dynamic_list_delete_val(engDef.val, engDef.val[$index]);" style="margin-left: 5px; border-bottom-left-radius: 4px; border-top-left-radius: 4px;"><span class="glyphicon glyphicon-minus"></span></button>
+                            </span>
+                        </div>
+
+                        <div ng-if="wordForm['engDefForm_' + keyEngDefSimilarVal].$touched || wordForm.$submitted" class="bg-danger h4t-form-error">
+                            <span ng-if="wordForm['engDefForm_' + keyEngDefSimilarVal].engDef.$error.required" class="h4t-form-font-margin">Введите определение слова, пожалуйста</span>
+                            <span ng-if="wordForm['engDefForm_' + keyEngDefSimilarVal].engDef.$error.minlength" class="h4t-form-font-margin">Не принимаем определение из 3 символов ;)</span>
+                            <span ng-if="wordForm['engDefForm_' + keyEngDefSimilarVal].engDef.$error.maxlength" class="h4t-form-font-margin">Ооочень много букв, сгоните кота с клавиатуры :(</span>
+                        </div>
+                    </ng-form>
+                </div>
+
+                <button id="moreSimilarEngDef" type="button" class="btn btn-primary center-block top5" style="margin-top: 5px; font-size: 12px" ng-click="dynamic_list_add_val(engDef.val);" ng-if="engDef.val.length < 100">
+                    еще похожее определение
+                </button>
+
+            </div>
+        </div>
+    <div class="row" style="margin-left: 0; margin-right: 0">
+        <div class="col-sm-4">
+            <div class="form-group text-center" ng-class="{'has-error': (wordForm['rusValForm_' + keyDef].$touched || wordForm.$submitted) && wordForm['rusValForm_' + keyDef].$invalid}">
+                <label class="control-label" for="rusValues">Найди и напиши перевод
+
+                    <div class="text-center create-word-hint-border">
+                        <a target="{{engVal() + '_google_help'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                           ng-attr-href="{{showExtLink() && 'http://www.google.com/search?q=define:' + engVal() || undefined}}" style="font-size: 12px">Google</a>
+                        <a target="{{engVal() + '_multitran'}}" class="btn h4t-fav-btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                           ng-attr-href="{{showExtLink() && 'http://www.multitran.ru/c/m.exe?CL=1&l1=1&s=' + engVal() || undefined}}" style="font-size: 12px">Multitran</a>
+                        <a target="{{engVal() + '_abby'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                           ng-attr-href="{{showExtLink() && 'http://www.lingvo-online.ru/ru/Translate/en-ru/' + engVal() || undefined}}" style="font-size: 12px">ABBYY</a>
+                        <a target="{{engVal() + '_yandex'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                           ng-attr-href="{{showExtLink() && 'https://translate.yandex.by/?lang=en-ru&text=' + engVal() || undefined}}" style="font-size: 12px">Yandex</a>
+                        <a target="{{engVal() + '_google_translate'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                           ng-attr-href="{{showExtLink() && 'https://translate.google.com/#en/ru/' + engVal() || undefined}}" style="font-size: 12px">Google Translate</a>
+
+                    </div>
+                </label>
+
+                <div id="rusValues" ng-repeat="(key, rusVal) in engDef.rusValues track by $index" aria-describedby="rusValuesHelp">
+                    <ng-form name="rusValForm_{{keyDef}}">
+                        <div class="top5" ng-class="{'input-group' : engDef.rusValues.length > 1}">
+                            <input ng-model="engDef.rusValues[$index]" type="text" class="form-control" name="rusVal" placeholder="Введите русский перевод слова, фразы." required ng-minlength="3" ng-maxlength="255">
+                            <span class="input-group-btn" ng-if="engDef.rusValues.length > 1">
+                            <button class="btn btn-default" type="button" ng-click="dynamic_list_delete_val(engDef.rusValues, rusVal);"><span class="glyphicon glyphicon-minus"></span></button>
+                        </span>
+                        </div>
+
+                        <div ng-if="wordForm['rusValForm_' + keyDef].rusVal.$touched || wordForm.$submitted" class="bg-danger h4t-form-error">
+                            <span ng-if="wordForm['rusValForm_' + keyDef].rusVal.$error.required" class="h4t-form-font-margin">Введите перевод, пожалуйста</span>
+                            <span ng-if="wordForm['rusValForm_' + keyDef].rusVal.$error.minlength" class="h4t-form-font-margin">Не принимаем слова меньше 3 символов ;)</span>
+                            <span ng-if="wordForm['rusValForm_' + keyDef].rusVal.$error.maxlength" class="h4t-form-font-margin">Ооочень много букв, сгоните кота с клавиатуры :(</span>
+                        </div>
+                    </ng-form>
+                </div>
+                <button id="addRusButton" type="button" class="btn btn-primary center-block top5" style="margin-top: 5px; font-size: 12px" ng-click="dynamic_list_add_val(engDef.rusValues);" ng-if="engDef.rusValues.length < 100">еще перевод
+                </button>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group text-center" ng-class="{'has-error': (wordForm['engSentenceForm_' + keyDef].$touched || wordForm.$submitted) && wordForm['engSentenceForm_' + keyDef].$invalid}">
+                <label class="control-label" for="engSentencesValues">Найди и напиши предложение</label>
+                <div class="text-center create-word-hint-border">
+                    <a target="{{engVal() + '_quotes'}}" class="btn h4t-fav-btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://www.brainyquote.com/search_results.html?q=' + engSentencesSearch()|| undefined}}" style="font-size: 12px">Quotes</a>
+                    <a target="{{engVal() + '_merriam-webster_help'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://www.merriam-webster.com/dictionary/' + engVal() || undefined}}" style="font-size: 12px">Merriam-Webster</a>
+                    <a target="{{engVal() + '_collins'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://www.collinsdictionary.com/dictionary/english/' + engValCollins() || undefined}}" style="font-size: 12px">Collins</a>
+                    <a target="{{engVal() + '_google_help'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://www.google.com/search?q=define:' + engVal() || undefined}}" style="font-size: 12px">Google</a>
+                    <a target="{{engVal() + '_your_dictionary_sentence_help'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://sentence.yourdictionary.com/' + engVal() || undefined}}" style="font-size: 12px; padding-left: 6px; padding-right: 6px;">Your Dictionary</a>
+                    <a target="{{engVal() + '_medium'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://www.google.com/search?q=' + engSentencesSearch() + ' site:medium.com' || undefined}}" style="font-size: 12px">Medium</a>
+                    <a target="{{engVal() + '_ny_times'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://www.google.com/search?q=' + engSentencesSearch() + ' site:nytimes.com' || undefined}}" style="font-size: 12px">NY Times</a>
+                    <a target="{{engVal() + '_washington_post'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://www.google.com/search?q=' + engSentencesSearch() + ' site:washingtonpost.com' || undefined}}" style="font-size: 12px">WP</a>
+                </div>
+
+                <div id="engSentencesValues" ng-repeat="(key, engSentence) in engDef.engSentences track by $index" aria-describedby="engSentencesHelp">
+                    <ng-form name="engSentenceForm_{{keyDef}}">
+                        <div class="top5" ng-class="{'input-group' : engDef.engSentences.length > 1}">
+                            <textarea ng-model="engDef.engSentences[$index]" class="form-control" name="engSentence" placeholder="Cкопируйте предложения с этим словом или фразой" required ng-minlength="3" ng-maxlength="500" rows="6"></textarea>
+                            <span class="input-group-btn input-group-addon" ng-if="engDef.engSentences.length > 1">
+                                <button class="btn btn-default" type="button" ng-click="dynamic_list_delete_val(engDef.engSentences, engSentence);"><span class="glyphicon glyphicon-minus"></span></button>
+                            </span>
+                        </div>
+
+                        <div ng-if="wordForm['engSentenceForm_' + keyDef].$touched || wordForm.$submitted" class="bg-danger h4t-form-error">
+                            <span ng-if="wordForm['engSentenceForm_' + keyDef].$error.required" class="h4t-form-font-margin">Напишите английское предложение, пожалуйста</span>
+                            <span ng-if="wordForm['engSentenceForm_' + keyDef].$error.minlength" class="h4t-form-font-margin">Слишком маленькое предложение ;)</span>
+                            <span ng-if="wordForm['engSentenceForm_' + keyDef].$error.maxlength" class="h4t-form-font-margin">Ооочень много букв, сгоните кота с клавиатуры :(</span>
+                        </div>
+                    </ng-form>
+                </div>
+                <button id="addSentenceButton" type="button" class="btn btn-primary center-block top5" style="margin-top: 5px; font-size: 12px;" ng-click="dynamic_list_add_val(engDef.engSentences);" ng-if="engDef.engSentences.length < 100">еще
+                    предложение
+                </button>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group text-center" ng-class="{'has-error': (wordForm.$submitted && (!engDef.imageBLOB && !engDef.imgUrl))}">
+                <label class="control-label" for="engVal">Найди и загрузи картинку для данного значения</label>
+
+                <div class="text-center create-word-hint-border">
+                    <a target="{{engVal() + '_pic_find'}}" class="btn" ng-class="showExtLink() ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showExtLink() && 'http://images.google.com/search?tbm=isch&q=' + engVal() || undefined}}" style="font-size: 12px;">Найти картинку в Google по англ слову</a>
+                    <a target="{{engVal() + '_yandex_pic_find'}}" class="btn" ng-class="showYandexPictureLink(engDef) ? 'btn-info' : 'btn-default'"
+                       ng-attr-href="{{showYandexPictureLink(engDef) && 'https://yandex.by/images/search?text=' + engDef.rusValues[0] || undefined}}" style="font-size: 12px;">Найти картинку в Yandex по русcкому слову</a>
+                </div>
+
+                <span id="picHelp" class="help-block" style="font-size: 12px">Надо найти картинку соответствующую слову в интернете, сохранить к себе на диск и загрузить её
+                    <br><span class="label label-warning">!</span>Важно, не добавляйте картинку, где написано слово. Нужно для тренировки ваших знаний.
+                    <br><span class="label label-warning">!</span>Если не удается найти подходящую картинку, ищите через синоним или фразу с этим словом
+                </span>
+
+                <img id="wordImg_{{keyDef}}" ng-src="{{getImgURL(engDef.imgUrl, word.updatedTime)}}" style="max-width: 90%; margin-bottom: 5px;" class="center-block"/>
+                <canvas id="imgCanvas_{{keyDef}}" style="display: none;"></canvas>
+                <span class="btn btn-primary btn-file top5 center-block" style="width: 82px; font-size: 12px">
+                    Browse...
+                    <input type="file" accept='image/*' onchange="angular.element(this).scope().openImage(this, event)" keyDef="{{keyDef}}">
+            </span>
+                <div class="bg-danger h4t-form-error has-error" ng-if="wordForm.$submitted && (!engDef.imageBLOB && !engDef.imgUrl)">
+                    <div class="h4t-form-font-margin">Добавьте картинку, пожалуйста</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+ignore multiply definition just for now!
+<div class="row text-center" style="margin-top: 15px;"><button id="moreEngDef" class="btn btn-primary" ng-click="addEngDef()">еще отличающееся определение</button></div>
+-->
+
+</form>
+
+<div class="margin-top-bottom-10px text-center">
+    <div ng-if="serverErrors.length > 0" class="bg-danger h4t-form-error">
+        Исправьте предложения:
+        <div ng-repeat="sententce in serverErrors track by $index">
+            <span>{{$index}}.&nbsp;{{sententce}}</span>
+        </div>
+    </div>
+    <div ng-if="(wordForm.$invalid || isNotValidForNonStandardFields() || serverErrors.length > 0) && wordForm.$submitted" class="bg-danger h4t-form-error">На форме есть ошибки, исправьте их, пожалуйста</div>
+    <button id="saveWordButton" class="btn btn-success" type="submit" ng-click="saveWord({data:wordForm})">Финиш</button>
+    <button class="btn btn-warning" ng-click="cancelWord()">Отмена</button>
+    <button ng-if="isWordSetUser" id="saveWordToWordSetButton" class="btn btn-success" type="submit" ng-click="saveWord({data:wordForm, toWordSet:true, wordSetId:wordSetId})">Сохранить в набор</button>
+</div>

@@ -1,0 +1,64 @@
+<div ng-if="pageInit">
+<div class="row text-center">
+    <span class="friends_add_friend_text">Добавить друга из</span>
+
+    <button class="btn btn-default friends_add_button_sn" ng-click="showVkFriends()" ng-if="userVkLink">
+        <i class="fa fa-vk"></i>
+    </button>
+
+    <button class="btn btn-default friends_add_button_sn" ng-click="showFacebookFriends()" ng-if="userFbLink">
+        <i class="fa fa-facebook"></i>
+    </button>
+
+</div>
+
+<div class="text-center" ng-if="friends.length == 0">
+    <img src="https://d2ce9r2khtuixp.cloudfront.net/img/friend/no-friends.png" class="no_friends_img" alt=""/>
+</div>
+
+<div ng-if="friends.length > 0">
+<div class="row friends_table_header hidden-xs">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-1 text-center">
+        <span class="fa fa-clock-o" style="font-size: 20px;"></span>
+        <span style="font-size: 15px; font-family: 'Source Sans Pro', serif;">Training today</span>
+    </div>
+    <div class="col-sm-4 text-center">
+        <div style="margin-top: 15px;">
+            <span class="fa fa-calendar-check-o" style="font-size: 20px;"></span>
+            <span style="font-size: 15px; font-family: 'Source Sans Pro', serif;">Training Calendar</span>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+<div class="row friends_row" ng-repeat="friend in filteredFriends = (friends | orderBy:'-wordCount')"
+     ng-class="{'friends_table_footer' : $index + 1 == friends.length, 'friends_first_row' : $index == 0}">
+    <div class="col-sm-1 text-center">
+        <img ng-src="{{friend.photoUrl}}" class="img-rounded" style="max-width: 90px; margin-bottom: 10px"
+             img-err-src="https://d2ce9r2khtuixp.cloudfront.net/img/friend/avatar-error-v3.png"/>
+    </div>
+    <div class="col-sm-2 text-center">
+        <div class="friends_name">
+            {{friend.firstName}}
+            <a target="_blank" class="social_network_link vk_network_link btn h4t-login-vk" ng-attr-href="{{'https://vk.com/id' + friend.vkUid}}" ng-if="friend.vkUid"><i class="fa fa-vk"></i></a>
+            <a target="_blank" class="social_network_link fk_network_link btn h4t-login-facebook" ng-attr-href="{{'https://facebook.com/' + friend.fbUid}}" ng-if="friend.fbUid"><i class="fa fa-facebook"></i></a>
+        </div>
+        <div style="margin-top: 10px;">В словаре <span style="font-size: 18px;">{{friend.wordCount}}</span> {{evalSlovo(friend.wordCount)}}</div>
+    </div>
+    <div class="col-sm-1 text-center">
+        <div class="friends_spent_time">
+            <div class="friends_spent_time_percent">{{percent(friend.todaySpentTime)}}%</div>
+            <div>{{min(friend.todaySpentTime)}} мин</div>
+            <div>{{sec(friend.todaySpentTime)}} сек</div>
+        </div>
+    </div>
+    <div class="col-sm-4 text-center">
+        <training-calendar training-calendar="friend.trainingCalendarUi" without-header="true"></training-calendar>
+    </div>
+    <div class="col-sm-4 text-center">
+        <button class="btn btn-default friends_color_scheme friends_list_buttons" type="button" ng-click="unsubscribeFriend(friend.friendUid)">Отписаться</button>
+    </div>
+</div>
+</div>
+</div>

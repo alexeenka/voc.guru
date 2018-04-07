@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="row text-center">
+        <img ng-src="{{topUser.photoUrl}}" class="img-rounded" style="max-width: 90px; max-height: 90px; margin: 10px;"
+             img-err-src="https://d2ce9r2khtuixp.cloudfront.net/img/friend/avatar-error-v3.png"/>
+    </div>
+    <div class="row text-center" style="font-weight: bold; text-decoration: underline;">
+        {{workHint(topUser.work)}}
+    </div>
+    <div class="row text-center">
+        {{topUser.firstName}}
+        <a target="_blank" class="social_network_link vk_network_link btn h4t-login-vk" ng-attr-href="{{'https://vk.com/id' + topUser.vkuid}}" ng-if="topUser.vkuid"><i class="fa fa-vk"></i></a>
+        <a target="_blank" class="social_network_link fk_network_link btn h4t-login-facebook" ng-attr-href="{{'https://facebook.com/' + topUser.fbuid}}" ng-if="topUser.fbuid"><i
+                class="fa fa-facebook"></i></a>
+        <a target="_blank" class="social_network_link top-add-user btn" ng-click="addUserAsFriend(topUser.userId)"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
+    </div>
+</div>
+
+
+
+
+

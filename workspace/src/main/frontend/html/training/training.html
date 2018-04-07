@@ -1,0 +1,90 @@
+<div ng-show="training.isNone()">
+
+<div class="row text-center tracking_time_hint">
+    <span ng-if="spentTime.total == 0">Потренируемся!</span>
+    <span ng-if="!trainingPageTodayWorkFinish() && spentTime.total != 0">Сегодня Вы занимались <span>{{spentTime.min}} мин {{spentTime.sec}} сек</span> при плане в <span>20 мин</span></span>
+    <span ng-if="trainingPageTodayWorkFinish()">Вы, молодец! План в 20 мин выполнен! Вы занимались <span>{{spentTime.min}} мин {{spentTime.sec}} сек</span>. Кстати, "Training is a marathon, not a sprint.")</span>
+</div>
+<div class="row">
+    <div class="col-sm-8">
+        <div style="background-color: #E6E6E6; padding-top: 15px; padding-left: 15px; padding-right: 15px; border-radius: 10px;">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="text-center"><a class="btn btn-default" style="background-color: #ffd33c" ng-click="startWorkout('ENG-RUS');">ENG-RUS</a></div>
+                    <div class="training_type_div">
+                        <img id="ENG-RUS-start-pic" class="training_pic" src="https://d2ce9r2khtuixp.cloudfront.net/img/training-eng-rus.jpg" alt="ENG-RUS"
+                             ng-click="startWorkout('ENG-RUS');">
+                    </div>
+                    <div class="caption">
+                        <p class="text-center training_descr">Будут показываться слова на английском, надо написать перевод на русском</p>
+                    </div>
+                    <training-thumbnail-bottom counts="countsEngRusWords"></training-thumbnail-bottom>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="text-center"><a class="btn btn-info" style="background-color: #6a9ce1" ng-click="startWorkout('RUS-ENG');">RUS-ENG</a></div>
+                    <div class="training_type_div">
+                        <img id="RUS-ENG-start-pic" class="training_pic" src="https://d2ce9r2khtuixp.cloudfront.net/img/training-rus-eng.jpg"
+                             ng-click="startWorkout('RUS-ENG');" alt="RUS-ENG">
+                    </div>
+                    <div class="caption">
+                        <p class="text-center training_descr">Будут показываться слова на русском, надо написать перевод на английском</p>
+                    </div>
+                    <training-thumbnail-bottom counts="countsRusEngWords"></training-thumbnail-bottom>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="text-center"><a class="btn btn-info" style="background-color: #1eaa0b" ng-click="startWorkout('DEF-ENG');">DEF-ENG</a></div>
+                    <div class="training_type_div">
+                        <img id="DEF-ENG-start-pic" class="training_pic" ng-click="startWorkout('DEF-ENG');" src="https://d2ce9r2khtuixp.cloudfront.net/img/training-def-eng.jpg" alt="DEF-ENG">
+                    </div>
+                    <div class="caption">
+                        <p class="text-center training_descr">Будут показываться определения слова на английском, надо написать его английский эквивалент</p>
+                    </div>
+                    <training-thumbnail-bottom counts="countsDefEngWords"></training-thumbnail-bottom>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="text-center"><a class="btn btn-info" style="background-color: #e58dca" ng-click="startWorkout('IMG-ENG');">IMG-ENG</a></div>
+                    <div class="training_type_div">
+                        <img id="IMG-ENG-start-pic" class="training_pic" ng-click="startWorkout('IMG-ENG');" src="https://d2ce9r2khtuixp.cloudfront.net/img/training-img-eng.jpg" alt="IMG-ENG" >
+                    </div>
+                    <div class="caption">
+                        <p class="text-center training_descr">Будут показываться изображения надо написать перевод на английском</p>
+                    </div>
+                    <training-thumbnail-bottom counts="countsImgEngWords"></training-thumbnail-bottom>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="text-center"><a class="btn btn-info" style="background-color: #ca8000" ng-click="startWorkout('SEN-ENG');">SEN-ENG</a></div>
+                    <div class="training_type_div" style="min-height: 176px; width: inherit; padding: 10px">
+                        <img id="SEN-ENG-start-pic" class="training_pic" ng-click="startWorkout('SEN-ENG');" src="https://d2ce9r2khtuixp.cloudfront.net/img/training-sen-eng.png" alt="SEN-ENG">
+                    </div>
+                    <div class="caption">
+                        <p class="text-center training_descr">Будут показываться введенные предложения, надо вставить слово в нужной форме</p>
+                    </div>
+                    <training-thumbnail-bottom counts="countsSenEngWords"></training-thumbnail-bottom>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <training-calendar training-calendar="trainingCalendar"></training-calendar>
+    </div>
+</div>
+
+</div>
+<eng-rus-training training="training" eng-rus-workout="engRusWorkout" ng-show="training.showTraining('ENG-RUS')"></eng-rus-training>
+<rus-eng-training training="training" rus-eng-workout="rusEngWorkout" ng-show="training.showTraining('RUS-ENG')"></rus-eng-training>
+<def-eng-training training="training" def-eng-workout="defEngWorkout" ng-show="training.showTraining('DEF-ENG')"></def-eng-training>
+<img-eng-training training="training" img-eng-workout="imgEngWorkout" ng-show="training.showTraining('IMG-ENG')"></img-eng-training>
+<sen-eng-training training="training" sen-eng-workout="senEngWorkout" ng-show="training.showTraining('SEN-ENG')"></sen-eng-training>
+

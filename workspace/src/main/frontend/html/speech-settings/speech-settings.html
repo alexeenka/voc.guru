@@ -1,0 +1,127 @@
+<div class="modal-header text-center">
+    <button type="button" class="close" ng-click="closeSpeechSettings()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title text-center speech_settings_important_text">
+        <span ng-if="!isInitSpeech && dontSupportSpeechSynthesis">
+            Уведомление
+        </span>
+        <span ng-if="!(!isInitSpeech && dontSupportSpeechSynthesis)">
+            Ваши настройки произношения, английского и русского, для слов, предложений и т.д.:
+        </span>
+    </h4>
+</div>
+<div class="modal-body">
+    <div ng-if="!isInitSpeech && !dontSupportSpeechSynthesis" class="row text-center">
+        <h3>Speech functionality has not been initialized!</h3>
+    </div>
+    <div ng-if="!isInitSpeech && dontSupportSpeechSynthesis" class="row text-center" style="margin-left: 10px; margin-right: 10px; ">
+        <div style="padding: 15px; background-color: #e1f6fd;border-radius: 5px; display:inline-block;">
+            <div class="row speech_settings_important_text">
+                Ваш<span ng-if="!isMobile">&nbsp;браузер&nbsp;</span><span ng-if="isMobile">&nbsp;телефон&nbsp;</span>не поддерживает технологию синтеза речи.
+            </div>
+            <div class="row" style="font-size: 16px;">
+                Синтез речи нужен для того, чтобы задействовать слуховую память, а также знать произношение слова.
+                Можно продолжать без синтеза речи, но эффективность запоминания будет значительно ниже.
+            </div>
+            <div class="row thumbnail" style="width: 90%; margin-right: auto; margin-left: auto; padding: 15px; background-color: white; border-radius: 5px; font-size: 16px; margin-top: 15px;">
+                <div class="row" ng-if="!isMobile">
+                    Для работы за компьютером установите последнюю версию
+                    <a href="http://www.google.com/chrome/" target="_blank" class="btn btn-default">
+                        <img src="https://d2ce9r2khtuixp.cloudfront.net/img/chrome.png" style="display: inline-block; padding-right: 5px;"/>Chrome
+                    </a>
+                </div>
+                <div class="row" ng-if="isMobile">
+                    <div ng-if="isAndroid">
+                        Пожалуйста, для вашего Android устройства, используйте Chrome Browser последней версии
+                        <br>
+                        <a href="https://play.google.com/store/apps/details?id=com.android.chrome&hl=en" target="_blank" class="btn btn-default"><img src="https://d2ce9r2khtuixp.cloudfront.net/img/chrome.png"
+                                                                                                                                                      style="padding-right: 5px;"/>Chrome</a>
+                        <br>
+                        Также проверьте установку и настройку Google Text-to-speech:
+                        <br>
+                        Установка:
+                        <a href="https://play.google.com/store/apps/details?id=com.google.android.tts&hl=en" target="_blank" class="btn btn-default">
+                            <i class="fa fa-android" aria-hidden="true"></i>TTS
+                        </a>
+                        <br>
+                        Настройка:&nbsp;<i class="fa fa-cog" aria-hidden="true"></i>&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i>&nbsp;Язык и ввод&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i>&nbsp;Преобразование текста в речь
+                    </div>
+                    <div ng-if="isIOS">
+                        <i class="fa fa-apple" aria-hidden="true"></i>Пожалуйста, компания Apple и Стив Джобс, лично с небес, рекоммендует вам установить обновление вашей iOS.
+                    </div>
+                    <div ng-if="!isIOS && !isAndroid">
+                        Если вы зашли с телефона,то поможет обновление ОС. Все современные модели телефонов, андроид <i class="fa fa-android" aria-hidden="true"></i> или iphone <i class="fa fa-apple" aria-hidden="true"></i> поддерживают данную технологию.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="isInitSpeech" style="margin-left: 3px; margin-right: 3px;">
+        <div class="row speech_setting_current_speaker_title">Текущее английское произношение:</div>
+        <div class="row alert alert-warning speech_setting_current_speaker text-center" ng-if="speakerEng.voice == null && !isMobile">
+            Для произношения английских слов и предложений
+            <ng-include src="'/html/speech-settings/speech-system-advice.html'"></ng-include>
+        </div>
+        <div class="row alert alert-info speech_setting_current_speaker" ng-if="speakerEng.voice != null || isMobile">
+            <div class="col-sm-5 text-center" style="padding-left: 1px; padding-right: 1px;">{{speakerEng.desc}}</div>
+
+            <div class="col-sm-5 text-center" style="padding-left: 1px; padding-right: 1px;">
+                <span ng-if="isMobile" style="font-size: 10px">Вы можете выбрать другое произношение в основных настройках вашего телефона</span>
+                <span ng-if="!isMobile">Голос: {{speakerEng.voice.name}}</span>
+            </div>
+
+            <div class="col-sm-2 text-center" style="padding-left: 1px; padding-right: 1px;">
+                <button class="btn btn-default" type="button" ng-click="playText(speakerEng)" tooltip-placement="bottom" uib-tooltip="Прослушать" tooltip-append-to-body="true">
+                    <span class="glyphicon glyphicon-play-circle"></span>
+                </button>
+            </div>
+        </div>
+        <br>
+        <div class="row speech_setting_current_speaker_title">Текущее русское произношение:</div>
+        <div class="row alert alert-warning speech_setting_current_speaker text-center" ng-if="speakerRu.voice == null && !isMobile">
+            Для произношения русских слов
+            <ng-include src="'/html/speech-settings/speech-system-advice.html'"></ng-include>
+        </div>
+        <div class="row alert alert-info speech_setting_current_speaker" ng-if="speakerRu.voice != null || isMobile">
+            <div class="col-sm-5 text-center" style="padding-left: 1px; padding-right: 1px;">{{speakerRu.desc}}</div>
+
+            <div class="col-sm-5 text-center" style="padding-left: 1px; padding-right: 1px;">
+                <span ng-if="isMobile" style="font-size: 10px">Вы можете выбрать другое произношение в основных настройках вашего телефона</span>
+                <span ng-if="!isMobile">Голос: {{speakerRu.voice.name}}</span>
+            </div>
+
+            <div class="col-sm-2 text-center" style="padding-left: 1px; padding-right: 1px;">
+                <button class="btn btn-default" type="button" ng-click="playRuText(speakerRu)" tooltip-placement="bottom" uib-tooltip="Прослушать" tooltip-append-to-body="true">
+                    <span class="glyphicon glyphicon-play-circle"></span>
+                </button>
+            </div>
+        </div>
+        <br>
+        <div class="row" style="font-family: 'Times New Roman',serif; font-size: 18px; margin-left: 10px;">Change English Speaker:</div>
+        <div class="row" style="border-radius: 4px;font-family: monospace;padding-top: 5px;padding-bottom: 5px; margin-left: 20px; margin-right: 20px;"
+             ng-repeat="iSpeaker in englishSpeakers" ng-style="{'background-color' : (($index + 1) % 2 == 0) ? '#fafafa' : ''}">
+            <div class="col-sm-5 text-center" style="padding-left: 1px; padding-right: 1px;">{{iSpeaker.desc}}</div>
+
+            <div class="col-sm-5 text-center" style="padding-left: 1px; padding-right: 1px;">
+                <span ng-if="!isMobile">Голос: {{iSpeaker.voice.name}}</span>
+            </div>
+
+            <div class="col-sm-2 text-center" style="padding-left: 1px; padding-right: 1px;">
+                <div class="row text-center">
+                    <button class="btn btn-default" style="margin: 2px" type="button" ng-click="playText(iSpeaker)" tooltip-placement="bottom" uib-tooltip="Прослушать" tooltip-append-to-body="true">
+                        <span class="glyphicon glyphicon-play-circle"></span>
+                    </button>
+                </div>
+                <div class="row text-center">
+                    <button class="btn btn-default" style="margin: 2px" type="button" ng-click="chooseSpeaker(iSpeaker)" tooltip-placement="bottom" uib-tooltip="Выбрать" tooltip-append-to-body="true">
+                        <span class="glyphicon glyphicon-star" ng-style="{'color' : isActiveEngSpeaker(iSpeaker) ? '#FFB10A' : ''}"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="text-center">
+        <button class="btn btn-primary" type="button" ng-click="closeSpeechSettings()">Закрыть</button>
+    </div>
+</div>

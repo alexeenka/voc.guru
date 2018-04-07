@@ -1,0 +1,111 @@
+<div class="thumbnail" style="padding: 20px 15px; margin-top: 8px;">
+<div class="row training_calendar_content_header" style="margin-right: 0; margin-left: 0" ng-if="showHeader">
+    <div style="margin-left: 3px;">Training Calendar</div>
+    <hr style="border-top: 2px solid #eee; margin-top: 5px; margin-bottom: 5px">
+    <div style="font-size: 13px; margin-left: 3px;">Дни, когда вы занимались 20 мин</div>
+</div>
+<div style="width: 100%; margin-left: 3px;">
+    <div style="width: 100%">
+        <div class="training_calendar_block training_calendar_header">Mon</div>
+        <div class="training_calendar_block training_calendar_header">Tue</div>
+        <div class="training_calendar_block training_calendar_header">Wed</div>
+        <div class="training_calendar_block training_calendar_header">Thu</div>
+        <div class="training_calendar_block training_calendar_header">Fri</div>
+        <div class="training_calendar_block training_calendar_header">Sat</div>
+        <div class="training_calendar_block training_calendar_header">Sun</div>
+    </div>
+    <div class="training_calendar_week">
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:0}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:1}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:2}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:3}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:4}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:5}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:6}]"></ng-include>
+        </div>
+    </div>
+    <div class="training_calendar_week">
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:7}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:8}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:9}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:10}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:11}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:12}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:13}]"></ng-include>
+        </div>
+    </div>
+    <div class="training_calendar_week">
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:14}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:15}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:16}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:17}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:18}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:19}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:20}]"></ng-include>
+        </div>
+    </div>
+    <div class="training_calendar_week">
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:21, day_of_week:1}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:22, day_of_week:2}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:23, day_of_week:3}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:24, day_of_week:4}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:25, day_of_week:5}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:26, day_of_week:6}]"></ng-include>
+        </div>
+        <div class="training_calendar_block">
+            <ng-include src="'/html/directive/training-calendar.day.include.html'" ng-repeat="day_param in [{day:27, day_of_week:7}]"></ng-include>
+        </div>
+    </div>
+</div>
+
+</div>

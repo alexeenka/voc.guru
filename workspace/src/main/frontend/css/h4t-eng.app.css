@@ -1,0 +1,1373 @@
+/*! HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+.training_type_div {
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.training_pic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    .menu_brand {
+        display: none;
+    }
+
+    .training_type_div {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .training_pic {
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.training_descr {
+    min-height: 120px;
+}
+
+
+/** aalexeenka: see at site: http://getbootstrap.com/css/ **/
+@-moz-document url-prefix() {
+    fieldset {
+        display: table-cell;
+    }
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/*** ***/
+#copyrightSection {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    font-size: large;
+    font-family: 'Source Sans Pro', serif;
+}
+
+.h4t-page-header {
+    padding-bottom: 5px;
+    margin: 10px 0 5px;
+}
+
+.h4t-form-error {
+    font-family: 'Marck Script', cursive;
+    font-size: large;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/** add word functionality. begin. **/
+.h4t-form-font-margin {
+    margin-left: 5px;
+}
+
+.h4t-fav-btn {
+    border: 1px solid lightpink;
+}
+/** add word functionality. end. **/
+
+.top5 {
+    margin-top: 5px;
+}
+
+.voice_panel_animation {
+    -webkit-transition: width 0.5s;
+    transition: width 0.5s;
+}
+
+.voice_panel_small {
+    width: 120px;
+}
+
+.voice_panel_auto {
+    width: 255px;
+}
+
+.color_success {
+    color: #449d44
+}
+
+.color_mistake {
+    color: #f0ad4e
+}
+
+.color_info {
+    color: #5bc0de
+}
+
+.color_orange {
+    color: orange
+}
+
+.color_yellow {
+    color: yellow;
+}
+
+.score_base {
+    -webkit-transition: background-color 2s ease;
+    transition: background-color 2s ease;
+}
+
+.score_in_progress {
+    background-color: #46b8da;
+}
+
+.score_final {
+    background-color: #387838;
+}
+
+.training_score_section {
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.training_rw_border {
+    border: 2px solid #4dbcb6;
+    border-radius: 5px;
+}
+
+.training_tw_border {
+    border: 2px solid #cfcfcf;
+    border-radius: 5px;
+}
+
+.training_finish_border {
+    border: 5px solid gold;
+    border-radius: 5px;
+}
+
+
+.alphabet_paging {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.training_finish_table_header {
+    font-weight: bold;
+}
+
+.training_finish_row {
+    padding: 5px 3px;
+}
+
+.training_finish_odd {
+    border-top: 1px solid rgb(221, 221, 221);
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.training_finish_space {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.training_finish_odd_bg {
+    background-color: rgb(249,249,249);
+}
+
+.training_finish_rv_bg {
+    background-color: #ffed8c
+}
+
+.training_hint_title {
+    font-size: 9px;
+    float: left;
+    clear: both;
+    display: block;
+    background-color: #F5F5F5;
+    border-radius: 2px;
+}
+
+.training_def_key_desktop {
+    font-size: 30px;
+    margin-top: 70px;
+}
+
+.training_def_key_mobile {
+    font-size: 16px;
+    margin-top: 25px;
+}
+
+.training_eng_key_desktop {
+    font-size: 70px;
+    margin-top: 70px;
+}
+
+.training_eng_key_mobile {
+    font-size: 16px;
+    margin-top: 25px;
+}
+
+.training_rus_key_desktop {
+    font-size: 70px;
+    margin-top: 70px;
+}
+
+.training_rus_key_mobile {
+    font-size: 16px;
+    margin-top: 25px;
+}
+
+.training_sen_key_desktop {
+    font-size: 20px;
+    margin-top: 45px;
+}
+
+.training_sen_key_mobile {
+    font-size: 16px;
+    margin-top: 25px;
+}
+
+.margin_top_10px {
+    margin-top: 10px;
+}
+
+.margin_top_15px {
+    margin-top: 10px;
+}
+
+.margin_top_45px {
+    margin-top: 45px;
+}
+
+.margin_top_25px {
+    margin-top: 25px;
+}
+
+.margin_top_70px {
+    margin-top: 70px;
+}
+
+.margin_top_30px {
+    margin-top: 45px;
+}
+
+.training_desktop_hints {
+    margin-top: 45px;
+    font-size: large;
+    text-align: center;
+}
+
+.training_mobile_hints {
+    margin-top: 10px;
+    font-size: large;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70px;
+}
+
+.create_word_optional {
+    font-size: 10px;
+    background-color: rgba(128, 128, 128, 0.19);
+    padding: 2px;
+    border-radius: 3px;
+    position: relative;
+    top: -5px;
+    font-weight: 100;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.training_calendar_content_header {
+    margin-right: 0;
+    margin-left: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    color: gray;
+}
+
+.training_calendar_current_day {
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+}
+
+.training_calendar_week {
+    width: 100%;
+    height: 37px;
+}
+
+.training_calendar_block {
+    display: inline-block;
+    width: 14%;
+    border: 0 solid #ffffff;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    position: relative;
+}
+
+.training_calendar_header {
+    font-family: 'Source Sans Pro', serif;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    color: gray;
+}
+
+.training_calendar_cell_good, .training_calendar_cell_not_bad, .training_calendar_cell_bad, .training_calendar_cell_empty {
+    height: 33px;
+}
+
+.training_calendar_cell_good {
+    background-color: #4DBCB6;
+}
+
+.training_calendar_cell_not_bad {
+    background-color: rgba(77, 188, 182, 0.2);
+}
+
+.training_calendar_cell_bad {
+    background-color: #e2e2e2;
+}
+
+.training_calendar_cell_empty {
+    background-color: white;
+    border: 1px solid #e2e2e2;
+}
+
+.speech_button_icon {
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    width: 20px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 5px;
+    right: auto;
+}
+
+.vk_network_link {
+    padding: 2px 4px; !important;
+}
+
+.fk_network_link {
+    padding: 2px 8px; !important;
+}
+
+.social_network_link:visited {
+    color: white !important;
+}
+
+/*Filter styles*/
+.saturate {
+    -webkit-filter: saturate(3);
+    filter: saturate(3);
+}
+
+.grayscale {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.contrast {
+    -webkit-filter: contrast(160%);
+    filter: contrast(160%);
+}
+
+.brightness {
+    -webkit-filter: brightness(0.25);
+    filter: brightness(0.25);
+}
+
+.blur {
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+}
+
+.invert {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+
+.sepia {
+    -webkit-filter: sepia(100%);
+    filter: sepia(100%);
+}
+
+.huerotate {
+    -webkit-filter: hue-rotate(180deg);
+    filter: hue-rotate(180deg);
+}
+
+.rss.opacity {
+    -webkit-filter: opacity(50%);
+    filter: opacity(50%);
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers:
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster:
+                                          http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+/** EXTRA: BOOTSTRAP SECTION**/
+/** input file. begin. http://www.abeautifulsite.net/whipping-file-inputs-into-shape-with-bootstrap-3/ **/
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+/** input file. end. **/
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: red;
+    color: #000;
+    padding: 0.2em 0;
+    text-align: center;
+}
+
+.h4t-login-button {
+    padding-top: 0;  padding-bottom: 0;  padding-left: 0;
+    color: #ffffff;
+}
+
+.h4t-login-button-icon {
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    line-height: 36px;
+    width: 44px;
+    text-align: center;
+    font-size: 24px; !important;
+    color: #ffffff;
+
+}
+
+.h4t-login-button-text {
+    margin-left: 7px;
+    line-height: 36px;
+    font-size: 18px;
+    font-family: 'Source Sans Pro', serif;
+    color: #ffffff;
+}
+
+.h4t-login-facebook {
+    background-color: #3b5998;
+    color: #ffffff;
+}
+
+.h4t-login-facebook:hover {
+    background-color: #293c69;
+    color: #ffffff;
+}
+
+.h4t-login-vk {
+    background-color: #4c75a3;
+    color: #ffffff;
+}
+
+.h4t-login-vk:hover {
+    background-color: #314b67;
+    color: #ffffff;
+}
+
+/** create-word2 form**/
+
+.create-word-hint-border {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.41);
+}
+
+.create-word-error-border {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid #a94442;
+}
+
+.create-word-hint-4def {
+    border-radius: 5px;
+    padding: 3px 5px;
+    border: 0.5px solid #5bc0de;
+}
+
+.margin-top-bottom-10px {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.wordTypeDesc {
+    font-size: 11px;
+    padding: 7px;
+    position: absolute;
+}
+
+.mobile_wordTypeDescPic {
+    position: absolute;
+    font-size: 11px;
+    left: 85%;
+    top: 5px;
+    padding: 3px;
+    background-color: white;
+    border: 0.5px solid;
+    border-radius: 4px;
+}
+
+.filterEngVal{
+    background-color: rgba(253, 255, 202, 0.39);
+    font-size: 13px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.vocHint{
+    padding: 2px;
+    margin-right: 5px;
+    margin-top: 2px;
+    font-size: 10px;
+    float: left;
+    clear: both;
+    display: block;
+    background-color: #F5F5F5;
+    border-radius: 2px;
+}
+
+.vocList_word_item {
+    margin-top: 10px;
+    border-bottom: 0.5px solid #e9e7e7;
+}
+
+.newWord_form_title{
+    font-size: 20px;
+    background-color: rgba(162, 149, 149, 0.07);
+    border-radius: 8px;
+    word-spacing: 20px;
+}
+
+.newWord_work_effort_text {
+    margin-top: 5px;
+    border-bottom: 1px solid;
+    width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newWord_auto_complete {
+    margin-top: 5px;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.newWord_common_voc_link {
+    color: #3f97cd;
+    font-weight: bold;
+}
+
+.newWord_common_voc_link:visited {
+    text-decoration: none;
+    color: #3f97cd;
+}
+
+.newWord_common_voc_link:hover{
+    color: #3680ad;
+    text-decoration: none;
+}
+
+.training_result_thump_up {
+    margin-left: 15px;
+    padding: 4px;
+    background-color: #b2ea70;
+    border-radius: 3px;
+}
+
+body {
+    background: url("https://d2ce9r2khtuixp.cloudfront.net/img/bg/seamless_paper_texture.png");
+    /** for navigation menu **/
+    padding-top: 70px;
+}
+
+.navbar-custom {
+    background: #2C3E50;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+}
+.navbar-custom a:focus {
+    outline: none;
+}
+.navbar-custom .navbar-brand {
+    color: white;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus,
+.navbar-custom .navbar-brand:active,
+.navbar-custom .navbar-brand.active {
+    color: white;
+}
+.navbar-custom .navbar-nav {
+    letter-spacing: 1px;
+}
+.navbar-custom .navbar-nav li a {
+    color: white;
+}
+.navbar-custom .navbar-nav li a:hover {
+    color: #18BC9C;
+    outline: none;
+}
+
+.navbar-custom .navbar-nav .dropdown-menu li a {
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+.navbar-custom .navbar-nav .dropdown-menu li a:hover {
+    color: #18BC9C;
+    outline: none;
+}
+
+.navbar-custom .navbar-nav li a:focus,
+.navbar-custom .navbar-nav li a:active {
+    color: white;
+}
+.navbar-custom .navbar-nav li.active a {
+    color: white;
+    background: #18BC9C;
+}
+.navbar-custom .navbar-nav li.active a:hover,
+.navbar-custom .navbar-nav li.active a:focus,
+.navbar-custom .navbar-nav li.active a:active {
+    color: white;
+    background: #18BC9C;
+}
+.navbar-custom .navbar-toggle {
+    color: white;
+    text-transform: uppercase;
+    font-size: 10px;
+    border-color: white;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+    background-color: #18BC9C;
+    color: white;
+    border-color: #18BC9C;
+}
+
+.tracking_time_hint {
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: white;
+    }
+}
+
+@media (min-width: 768px) {
+    .tracking_time_hint {
+        width: 600px;
+    }
+
+    .navbar-custom {
+        padding: 7px 0;
+        -webkit-transition: padding 0.3s;
+        -moz-transition: padding 0.3s;
+        transition: padding 0.3s;
+    }
+    .navbar-custom .navbar-brand {
+        font-size: 2em;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+    .navbar-custom.affix {
+        padding: 10px 0;
+    }
+    .navbar-custom.affix .navbar-brand {
+        font-size: 1.5em;
+    }
+}
+
+.top_profile_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin-left: 15px;
+}
+
+.top-add-user {
+    padding: 2px 5px 2px 5px; !important;
+    background-color: #6ea327;
+    color: #ffffff;
+}
+
+.top-add-user:hover {
+    background-color: #5c9127;
+    color: #ffffff;
+}
+
+
+/** Friends functionality. Begin. **/
+.friends_add_friend_text {
+    border-bottom: 1px solid;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.friends_add_button_sn {
+    background-color: #2C3E50;
+    color: white;
+    width: 52px;
+    font-size: 24px;
+}
+
+.no_friends_img {
+    max-width: 100%;
+    border: 1px solid white;
+    border-radius: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px
+}
+
+.friends_popup_row {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+@media (min-width: 768px) {
+    .friends_popup_row {
+        max-height: 110px;
+        word-break: break-all;
+        margin-top: 15px;
+    }
+}
+.friends_popup_name{
+}
+
+@media (min-width: 768px) {
+    .friends_popup_name {
+        margin-top: 10px;
+        word-break: break-all;
+    }
+}
+
+.friends_popup_bottom_border {
+    padding-bottom: 5px;
+    border-bottom: 1px solid;
+}
+
+.friends_popup_header {
+    background-color: #43505e;
+    color: white;
+}
+
+.friends_popup_close_button {
+    background-color: #43505e;
+    color: white;
+}
+
+.friends_popup_colors {
+    background-color: #43505e;
+    color: white;
+}
+
+.friends_popup_img {
+    border-radius: 50px;
+    margin-bottom: 4px;
+    max-height: 100px;
+}
+
+@media (max-width: 767px) {
+    .friends_popup_img {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+}
+
+.friends_table_header {
+    background-color: #4dbcb6;
+    margin-top: 10px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    color: white;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.friends_table_footer {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.friends_list_buttons {
+    background-color: darkgray;
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .friends_list_buttons {
+        margin-top: 20px;
+    }
+
+}
+
+.friends_first_row {
+}
+
+@media (max-width: 767px) {
+    .friends_first_row {
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        margin-top: 10px;
+    }
+}
+
+.friends_row {
+    padding: 10px;
+    background-color: #fafafa
+}
+
+.friends_spent_time_percent {
+    font-size: 16px;
+    background-color: #F0FBFF;
+    border-radius: 5px;
+}
+
+.friends_spent_time {
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #bfbfbf;
+    border-radius: 5px;
+    padding: 10px
+}
+
+.friends_name {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+/** Friends functionality. End. **/
+
+/** Voc functionality. Begin. **/
+
+.voc_table_header {
+    margin-top: 10px;
+    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 25px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.voc_table_row {
+    background-color: white;
+}
+
+.voc_table_footer {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.voc_choice_letter_hint {
+    width: 80%;
+    background: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+/** Voc functionality. End. **/
+
+/** Speech Settings. Begin. **/
+.speech_setting_current_speaker_title {
+    font-family: 'Times New Roman', serif;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.speech_setting_current_speaker {
+    font-family: monospace;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.speech_settings_important_text {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/** Speech Settings. End. **/
+
+/** Global-Voc. Begin. **/
+
+.global-voc-body {
+    padding-top: 20px;
+    background-color: black;
+    padding-bottom: 10px;
+    border-radius: 8px;
+}
+
+.search-box {
+    padding: 15px;
+    font-size: 20px;
+}
+
+.search-box-input {
+    height: 66px;
+    font-size: 20px;
+}
+
+.global-voc-text {
+    color: white;
+    font-size: 16px;
+}
+
+.global-voc-slide-caption {
+    background-color: black;
+}
+
+#carouselButtons {
+    margin-left: 100px;
+    position: absolute;
+    bottom: 0;
+}
+.carousel-caption {
+    position: relative;
+    left: auto;
+    right: auto;
+
+    padding-top: 0;
+    top: 0;
+    padding-bottom: 0;
+    bottom: auto;
+}
+
+.carousel-indicators {
+    position: relative;
+    top:0;
+}
+
+.autocomplete-dropdown {
+    float:none;
+    z-index:100;
+    position:absolute;
+    width:100%;
+    font-size: 18px;
+    overflow:hidden;
+    background-color: white;
+    border-radius: 5px;
+    -webkit-transition: height 0.5s;
+    transition: height 0.5s;
+}
+
+.autocomplete-dropdown-item {
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.autocomplete-dropdown-item:hover {
+    background-color: antiquewhite;
+}
+
+/** Global-Voc. End. **/
+
+/** word set. begin **/
+.word_set_picture {
+    max-width: 250px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.word_set_title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.word_set_content {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.word_set_content_button {
+    margin-top: 10px; margin-bottom: 10px;
+}
+
+.word_set_panel {
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: white
+}
+
+.word_set_panel_outer {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.word_set_panel_view_button {
+    background-color: black; color: white
+}
+
+.word_set_panel_added_word {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #b00849;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.word_list_panel {
+    border-radius: 10px;
+    border: 2px solid;
+    margin-bottom: 15px;
+    background: black;
+}
+
+.word_list_back_button {
+    margin-bottom: 7px;
+    color: #337ab7;
+    font-size: 14px;
+}
+
+.word_list_panel_eng_val {
+    font-weight: bold;
+    background: black;
+    color: white;
+    margin-bottom: 10px;
+    font-size: 17px;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+
+.word_list_panel_eng_val_text {
+    padding: 5px; border: 1px solid; border-radius: 5px;
+}
+
+.word_list_img_outer {
+    min-height: 290px;
+    line-height: 290px;
+    vertical-align: middle
+}
+
+.word_list_img_inner {
+    max-width: 90%;
+    max-height: 290px;
+    border-radius: 10px;
+}
+
+.word_list_rus_val {
+    font-size: 14px;
+    font-weight: bold;
+    background: black;
+    color: white;
+    margin: 10px 15px 7px;
+}
+/** word set. end **/
+
+/** christmas. begin. */
+.glow-text {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /*padding: 10px;*/
+    border: none;
+    /*font: normal 48px/normal "Warnes", Helvetica, sans-serif;*/
+    /*font: normal 48px/normal "Warnes", Helvetica, sans-serif;*/
+    color: rgba(255,255,255,1);
+    text-decoration: normal;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    white-space: pre;
+    /*text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #ff00de , 0 0 70px #ff00de , 0 0 80px #ff00de , 0 0 100px #ff00de ;*/
+    text-shadow: 0 0 10px rgba(255,255,255,1), 0 0 20px rgba(285,255,255,1), 0 0 30px rgba(255,255,255,1), 0 0 40px #18bc9c, 0 0 70px #3c763d, 0 0 80px #3c763d, 0 0 100px #18bc9c;
+}
+
+.white-bg {
+    background-color: white;
+    border-radius: 5px;
+    padding: 0 3px;
+    border-bottom: none;
+}
+/** christmas. end. */

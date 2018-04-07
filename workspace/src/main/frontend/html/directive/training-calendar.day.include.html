@@ -1,0 +1,11 @@
+<div ng-class="getCssClass(day_param.day)" class="training_calendar_cell">
+
+    <div ng-if="trainingCalendar.daysWork[day_param.day] == GOOD" class="glyphicon glyphicon-ok-circle" style="float: right;color: white;margin-right: 2px;margin-top: 2px;"></div>
+    <div ng-if="trainingCalendar.daysWork[day_param.day] == BAD" class="glyphicon glyphicon-ban-circle" style="float: right;color: white;margin-right: 2px;margin-top: 2px;"></div>
+
+    <!-- only for last week-->
+    <div ng-if="day_param.day_of_week && trainingCalendar.dayOfWeek == day_param.day_of_week" class="glyphicon glyphicon-triangle-top training_calendar_current_day" style="position: absolute; top: 31px; display: block">
+    </div>
+</div>
+
+

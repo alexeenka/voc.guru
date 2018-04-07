@@ -1,0 +1,11 @@
+<span ng-if="isMobile">&nbsp;установите соответсвующий языковой пакет в настройках вашего телефона</span>
+<span ng-if="!isMobile">
+    &nbsp;установите последнюю версию&nbsp;<a href="http://www.google.com/chrome/" target="_blank" class="btn btn-default"><img src="https://d2ce9r2khtuixp.cloudfront.net/img/chrome.png" style="display: inline-block; padding-right: 5px;"/>Chrome</a>.
+    <span ng-if="browserInfo.isFireFoxOrEdge">
+        <br>
+        ИЛИ
+        <br>
+        Если Вы все же хотите остаться с {{::browserInfo.name}},
+        то попробуйте установиться языковой пакет от Microsoft в разделе Region & Language.
+    </span>
+</span>

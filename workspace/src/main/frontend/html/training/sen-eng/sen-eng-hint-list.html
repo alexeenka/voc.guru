@@ -1,0 +1,40 @@
+<p class="text-center training_desktop_hints" ng-if="!training.isMobileTraining() && (!workout.usedHint1stLetter || !workout.usedHint2ndLetter || !workout.usedHintDefinition || !workout.usedHintPicture)">
+    Hints:
+    <button type="button" class="btn btn-info" ng-if="!workout.usedHint1stLetter" ng-click="hint1stLetter()">Show 1st letter (-5 pts)</button>
+    <button type="button" class="btn btn-info" ng-if="!workout.usedHint2ndLetter" ng-click="hint2ndLetter()">Show 2nd letter (-3 pts)</button>
+    <button type="button" class="btn btn-info" ng-if="!workout.usedHintDefinition" ng-click="training.hintDefinition()">Definition (-3 pts)</button>
+    <button type="button" class="btn btn-info" ng-if="!workout.usedHintPicture" ng-click="training.hintPicture()">Picture (-3 pts)</button>
+</p>
+
+<div class="training_mobile_hints" ng-if="training.isMobileTraining() && (!workout.usedHint1stLetter || !workout.usedHint2ndLetter || !workout.usedHintDefinition || !workout.usedHintPicture)">
+    <div class="dropup">
+        <button class="btn btn-info dropdown-toggle" type="button" id="hintsSenEngDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Hints
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="hintsSenEngDropdownMenu">
+            <li><a href="#" ng-if="!workout.usedHint1stLetter" ng-click="hint1stLetter()">Show 1st letter (-5 pts)</a></li>
+
+            <!-- 0: separator: possible make optimization if work with array -->
+            <li role="separator" ng-if="
+                !workout.usedHint1stLetter && (!workout.usedHint2ndLetter || !workout.usedHintDefinition || !workout.usedHintPicture)
+            " class="divider"></li>
+
+            <li><a href="#" ng-if="!workout.usedHint2ndLetter" ng-click="hint2ndLetter()">Show 2nd letter (-3 pts)</a></li>
+
+            <!-- 1: separator: possible make optimization if work with array -->
+            <li role="separator" ng-if="
+                !workout.usedHint2ndLetter && (!workout.usedHintDefinition || !workout.usedHintPicture)
+            " class="divider"></li>
+
+            <li><a href="#" ng-if="!workout.usedHintDefinition" ng-click="training.hintDefinition()">Definition (-3 pts)</a></li>
+
+            <!-- 2: separator: possible make optimization if work with array -->
+            <li role="separator" ng-if="
+                !workout.usedHintDefinition && (!workout.usedHintPicture)
+            " class="divider"></li>
+
+            <li><a href="#" ng-if="!workout.usedHintPicture" ng-click="training.hintPicture()">Picture (-3 pts)</a></li>
+        </ul>
+    </div>
+</div>

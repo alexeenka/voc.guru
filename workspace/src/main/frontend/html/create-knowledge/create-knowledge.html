@@ -1,0 +1,94 @@
+<div class="center-block">
+
+    <div class="row text-center tracking_time_hint">
+        Мой словарь. В нём {{countsWord.str}}.
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <button id="createNewWord2" type="button" class="btn btn-success btn-lg center-block" ui-sref="create-word-state({engVal:null})" style="font-family: 'Source Sans Pro', serif; font-size: large; margin-bottom: 10px;">
+                Новое слово
+            </button>
+        </div>
+    </div>
+
+    <div>
+        <div class="row" style="background-color: #f8fdfe; padding: 5px; border-radius: 4px;">
+            <alphabet alphabet="alphabet"></alphabet>
+        </div>
+
+        <div ng-if="alphabet.letter == 'alphabet_choice'">
+            <div class="row text-center voc_choice_letter_hint">
+                <i class="fa fa-arrow-circle-o-up" aria-hidden="true" style="margin-right: 10px"></i>
+                <span>ВЫБЕРИТЕ БУКВУ</span>
+                <i class="fa fa-arrow-circle-o-up" aria-hidden="true" style="margin-left: 10px"></i>
+            </div>
+        </div>
+
+        <!-- don't show words when it doesn't choose alphabet letter -->
+        <div ng-if="alphabet.letter != 'alphabet_choice'">
+
+            <div class="row voc_table_header" ng-class="{'voc_table_footer' : workWordList.length == 0}">
+                    <div class="col-sm-6 text-center" style="margin-bottom: 8px">
+                        <input type="text" ng-model="filterEngVal.val" ng-change="changeEngVal()" class="form-control text-center filterEngVal"
+                               placeholder="Search">
+                    </div>
+                    <div class="col-sm-5 text-center">
+                        <div ng-if="workWordList.length > pagingSize" style="margin-top: 0; margin-bottom: 0px;" uib-pagination total-items="totalItems" ng-model="currentPage.val"
+                             max-size="maxSize" items-per-page="pagingSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"
+                             ng-change="updatePage()" previous-text="Prev"></div>
+                    </div>
+                    <div class="col-sm-1 text-center">
+                        <div class="badge" style="background-color: #a0a0a0; margin-bottom: 8px; margin-top: 8px;">
+                            <span ng-if="workWordList.length != wordList.length">{{workWordList.length}}&nbsp;/&nbsp;</span>
+                            {{wordList.length}}
+                        </div>
+                    </div>
+            </div>
+
+            <div id="rowListDiv" class="row voc_table_row"
+                 ng-repeat="word in filteredWords"
+                 ng-class="{'voc_table_footer' : $index + 1 == workWordList.length}">
+                <div class="col-sm-6">
+                    <div class="text-center" style="font-size: 17px;">
+                        <span>{{word.guiOrder + 1}}.&nbsp;</span>
+                        <span>
+                        <span id="engValList">{{word.engVal}}</span>
+                        <say-text text="word.engVal"></say-text>
+                    </span>
+                        <span class="wordTypeDesc">{{word.wordType}}</span>
+                    </div>
+                    <div class="vocList_word_item">
+                        <span class="vocHint">Definitions</span>
+                        <span id="engDevFavList">{{word.engDevFav}}</span>
+                    </div>
+                    <div class="vocList_word_item">
+                        <span class="vocHint">На русском</span>
+                        <span id="rusValueFavList">{{word.rusValueFav}}</span>
+                    </div>
+                    <div class="vocList_word_item">
+                        <span class="vocHint">Sentences</span>
+                        <span>{{word.engSentenceFav}}</span>
+                    </div>
+                </div>
+                <div class="col-sm-5 text-center">
+                    <div class="thumbnail" style="max-width: 450px">
+                        <img ng-src="{{word.imgURL  + '?t=' + word.updatedTime}}"
+                             style="max-height: 90%; margin-bottom: 5px;" class="center-block"
+                             img-err-src="https://d2ce9r2khtuixp.cloudfront.net/img/broken-img-url.png"/>
+                    </div>
+                </div>
+                <div class="col-sm-1" style="text-align: center; padding-bottom: 15px;">
+                    <button id="editReadyWordButton" type="button" class="btn btn-default" style="margin: 3px;"
+                            ui-sref="create-word-state({engVal:word.engVal})">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </button>
+                    <button id="removeReadyWordButton" type="button" class="btn btn-default" style="margin: 3px;"
+                            ng-click="delete_word(word.engVal)">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

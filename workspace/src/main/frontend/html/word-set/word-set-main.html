@@ -1,0 +1,26 @@
+<div class="word_set_panel_outer">
+    <div class="row word_set_panel">
+        <div class="row text-center word_set_title" >
+            OGDEN'S BASIC ENGLISH WORDS (850 WORDS)
+            <i class="fa fa-info-circle" style="cursor: pointer" aria-hidden="true" ng-click="ogdenHint()"></i>
+        </div>
+        <div class="row text-center word_set_content">
+            <div class="col-sm-6">
+                <img src="https://d2ce9r2khtuixp.cloudfront.net/img/words-set/ogden/QUALITIES-50.png" alt="" ui-sref="word-set-list-state({listId:0})" class="word_set_picture"/>
+                <div class="word_set_content_button">
+                    <a class="btn btn-default word_set_panel_view_button" ui-sref="word-set-list-state({listId:0})">Просмотреть</a>
+                    <a class="btn btn-primary" ng-click="add10word(0)">Взять 10 слов</a>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <img src="https://d2ce9r2khtuixp.cloudfront.net/img/words-set/ogden/THINGS-200.png" alt="" ui-sref="word-set-list-state({listId:1})" class="word_set_picture"/>
+                <div>
+                    <div class="word_set_content_button">
+                        <a class="btn btn-default word_set_panel_view_button" ui-sref="word-set-list-state({listId:1})">Просмотреть</a>
+                        <a class="btn btn-primary" ng-click="add10word(1)">Взять 10 слов</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

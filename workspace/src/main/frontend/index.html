@@ -1,0 +1,369 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Vocabulary</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- ** CSS: vendor, must be one line, always: ** -->
+    <link rel="stylesheet" href="https://d2ce9r2khtuixp.cloudfront.net/css/vendor_css_0.8.css">
+
+    <!-- ** CSS: site, must be one line: ** -->
+    <link rel="stylesheet" href="$app_css$">
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+            document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '2078562849036954'); // Insert your pixel ID here.
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=2078562849036954&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+    <script>
+        var appGlobals = {
+            vocVersion : function vocVersion() {
+                return "$build_version$";
+            }
+        };
+    </script>
+</head>
+<body ng-app="h4t-eng">
+
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '193614377664302',
+            xfbml      : true,
+            version    : 'v2.11'
+        });
+
+        FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- ***** Audio section. BEGIN. ***** -->
+<audio id="alphabetAudio" preload="auto">
+    <source src="https://d2ce9r2khtuixp.cloudfront.net/audio/alphabet.m4a"/>
+    Whoops, we thought your browser supported HTML5 audio and it doesn't.
+</audio>
+<audio id="applauseAudio" preload="auto">
+    <source src="https://d2ce9r2khtuixp.cloudfront.net/audio/applause.mp3"/>
+    Whoops, we thought your browser supported HTML5 audio and it doesn't.
+</audio>
+<audio id="crowdCheersAudio" preload="auto">
+    <source src="https://d2ce9r2khtuixp.cloudfront.net/audio/crowd-cheers.mp3"/>
+    Whoops, we thought your browser supported HTML5 audio and it doesn't.
+</audio>
+<audio id="waterDropsAudio" preload="auto">
+    <source src="https://d2ce9r2khtuixp.cloudfront.net/audio/water-drops.mp3"/>
+    Whoops, we thought your browser supported HTML5 audio and it doesn't.
+</audio>
+<audio id="ENG-RUS-start-audio" preload="auto">
+    <source src="https://d2ce9r2khtuixp.cloudfront.net/audio/start-eng-rus.mp3"/>
+    Whoops, we thought your browser supported HTML5 audio and it doesn't.
+</audio>
+<audio id="DEF-ENG-start-audio" preload="auto">
+    <source src="https://d2ce9r2khtuixp.cloudfront.net/audio/start-def-eng.mp3"/>
+    Whoops, we thought your browser supported HTML5 audio and it doesn't.
+</audio>
+<audio id="RUS-ENG-start-audio" preload="auto">
+    <source src="https://d2ce9r2khtuixp.cloudfront.net/audio/start-rus-eng.mp3"/>
+    Whoops, we thought your browser supported HTML5 audio and it doesn't.
+</audio>
+<audio id="IMG-ENG-start-audio" preload="auto">
+    <source src="https://d2ce9r2khtuixp.cloudfront.net/audio/start-img-eng.mp3"/>
+    Whoops, we thought your browser supported HTML5 audio and it doesn't.
+</audio>
+<audio id="SEN-ENG-start-audio" preload="auto">
+    <source src="https://d2ce9r2khtuixp.cloudfront.net/audio/start-sen-eng.mp3"/>
+    Whoops, we thought your browser supported HTML5 audio and it doesn't.
+</audio>
+<!-- ***** Audio section. END. ***** -->
+
+<div class="container">
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom" ng-controller="PageHeaderCtrl">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand menu_brand" ng-click="setActiveTab('training')" ui-sref="training">VOC.GURU</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{'active' : isActiveTab('training')}" class="text-center"><a ng-click="setActiveTab('training')" ui-sref="training">Тренировка</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown text-center" >
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top: 0;padding-bottom: 0;">
+                            <span style="line-height: 50px; vertical-align: middle">Добавить слова</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-class="{'active' : isActiveTab('word-set')}" class="text-center"><a ng-click="setActiveTab('word-set')" ui-sref="word-set" style="line-height: 30px">Наборы слов</a></li>
+                            <li ng-class="{'active' : isActiveTab('create-knowledge')}" class="text-center"><a ng-click="setActiveTab('create-knowledge')" ui-sref="create-knowledge" style="line-height: 30px">My Словарь</a></li>
+                            <li ng-class="{'active' : isActiveTab('global-voc')}" class="text-center"><a ng-click="setActiveTab('global-voc')" ui-sref="global-voc" style="line-height: 30px">Общий словарь</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown text-center" >
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top: 0;padding-bottom: 0;">
+                            <span style="line-height: 50px; vertical-align: middle">Мир вокруг</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-class="{'active' : isActiveTab('top-users')}" class="text-center"><a ng-click="setActiveTab('top-users')" ui-sref="top-users" style="line-height: 30px">Лидеры</a></li>
+                            <li ng-class="{'active' : isActiveTab('friends')}" class="text-center"><a ng-click="setActiveTab('friends')" ui-sref="friends" style="line-height: 30px">Друзья</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" id="userInfoMenu" style="display: none">
+                    <li class="dropdown text-center" >
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top: 0;padding-bottom: 0;">
+                            <span>{{::userFN}}</span><img class="top_profile_img" ng-src="{{::userImg}}" alt="">
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a ng-click="speechSettings()" class="text-center">
+                                    <i class="glyphicon glyphicon-cog speech_button_icon"></i><span style="margin-left: 5px;">Speech</span>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="logout" class="text-center">Выйти</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div id="serverError" class="row alert alert-danger" style="display: none">
+        Ошибка на сервере: вы поможете проекту, если напишите мне сюда <a
+            href="https://www.facebook.com/alexey.alexeenka" target="_blank">author_fb</a> или сюда <a
+            href="http://vk.com/alexey.alexeenka" target="_blank">author_vk</a>
+        о ней:
+        <pre id="errorSummary"></pre>
+        <button type="button" class="btn btn-default" style="margin-left: 5px; float: right"
+                onclick="jQuery('#serverError').hide(); jQuery('#errorSummary').empty(); $('#errorContent').contents().find('html').empty();">
+            Закрыть
+        </button>
+        <pre><iframe id="errorContent" style="width: 100%; max-height: 150px"></iframe></pre>
+    </div>
+
+    <div ui-view></div>
+
+    <div id="copyrightSection">
+        Copyright <span class="fa fa-copyright"></span> VOC.GURU v.$build_version$, 2018 • <a href="https://voc.guru/static/privacy-policy.htm" target="_blank" style="color: black; text-decoration:none">Privacy</a>
+    </div>
+
+    <!-- Begin: Vendor section -->
+<!--begin_prod_version -->
+<script src="https://d2ce9r2khtuixp.cloudfront.net/js/vendor_0.9.js"></script>
+<!--end_prod-version-->
+
+<!--begin_dev_version-->
+    <!--<script src="js/vendor/jquery-2.2.1.js"></script>-->
+    <!--<script src="js/vendor/jquery-ui-1.11.4.js"></script>-->
+
+    <!--<script src="js/vendor/angular-1.5.0.js"></script>-->
+    <!--<script src="js/vendor/angular-animate-1.5.0.js"></script>-->
+    <!--<script src="js/vendor/angular-cookies-1.5.0.js"></script>-->
+
+    <!--<script src="js/vendor/ui-bootstrap-0.14.3.js"></script>-->
+    <!--<script src="js/vendor/ui-bootstrap-tpls-0.14.3.js"></script>-->
+    <!--<script src="js/vendor/angular-ui-router-0.2.15.js"></script>-->
+    <!--<script src="js/vendor/moment-2.10.6.js"></script>-->
+<!--end_dev_version-->
+<!-- End: Vendor section ** -->
+
+<!--##begin_app_js##-->
+<script src="js/app/main.js"></script>
+<script src="js/app/common/global.js"></script>
+<script src="js/app/populate_template_cache.js"></script>
+<script src="js/app/common/knowledge-service.js"></script>
+<script src="js/app/common/common-service.js"></script>
+<script src="js/app/common/counter-service.js"></script>
+<script src="js/app/create-knowledge/create-knowledge.js"></script>
+<script src="js/app/create-knowledge/create-word/create-word.js"></script>
+<script src="js/app/speech-settings/speech-settings.js"></script>
+<script src="js/app/friends/friends.js"></script>
+<script src="js/app/friends/friends.service.js"></script>
+<script src="js/app/top-users/top-users.js"></script>
+<script src="js/app/top-users/top-users.service.js"></script>
+<script src="js/app/word-set/word-set.js"></script>
+<script src="js/app/word-set/list/word-set.list.js"></script>
+<script src="js/app/word-set/word-set.service.js"></script>
+<script src="js/app/global-voc/global-voc.js"></script>
+<script src="js/app/global-voc/global-voc.service.js"></script>
+<script src="js/app/friends/social-networks/social-networks-friends.js"></script>
+<script src="js/app/devtab/devtab.js"></script>
+<script src="js/app/create-knowledge/directive/filter-points-button.directive.js"></script>
+<script src="js/app/create-knowledge/directive/eng-val-validator.directive.js"></script>
+
+<!-- Training -->
+<script src="js/app/training/training-service.js"></script>
+<script src="js/app/training/training.js"></script>
+<script src="js/app/training/eng-rus/eng-rus-training.directive.js"></script>
+<script src="js/app/training/def-eng/def-eng-training.directive.js"></script>
+<script src="js/app/training/rus-eng/rus-eng-training.directive.js"></script>
+<script src="js/app/training/img-eng/img-eng-training.directive.js"></script>
+<script src="js/app/training/sen-eng/sen-eng-training.directive.js"></script>
+<script src="js/app/training/directive/training-hint.directive.js"></script>
+<script src="js/app/training/directive/training-answer.directive.js"></script>
+<script src="js/app/training/directive/training-thumbnail-bottom.directive.js"></script>
+
+<!-- Shared directives: Begin -->
+<script src="js/app/directive/press-enter.directive.js"></script>
+<script src="js/app/directive/img-err-src.directive.js"></script>
+<script src="js/app/directive/say-text.directive.js"></script>
+<script src="js/app/directive/training-calendar.directive.js"></script>
+<script src="js/app/directive/alphabet.directive.js"></script>
+<!-- Shared directives: End -->
+
+<script src="js/app/service/modal.service.js"></script>
+<script src="js/app/service/speech-synthesis.service.js"></script>
+<script src="js/app/service/training-calendar.service.js"></script>
+<script src="js/app/service/work.service.js"></script>
+<script src="js/app/service/work-effort.service.js"></script>
+<!--##end_app_js##-->
+
+<!-- ***** JS section. END. ***** -->
+
+<!-- Global Space. Begin. -->
+<script>
+    function fbLoginUrl() {
+        return 'https://www.facebook.com/dialog/oauth?client_id=$fb-client-id$&scope=public_profile,user_friends&redirect_uri=$fb-redirect-url$';
+    }
+
+    function vkLoginUrl() {
+        return 'https://oauth.vk.com/authorize?client_id=$vk-client-id$&scope=friends,offline&display=page&redirect_uri=$vk-redirect-url$&response_type=code&v=5.12';
+    }
+</script>
+<!-- Global Space. End. -->
+
+<!-- Google Analytics: change UA-65105803-1 to be your site's ID. -->
+<!--<script>-->
+    <!--(function (b, o, i, l, e, r) {-->
+        <!--b.GoogleAnalyticsObject = l;-->
+        <!--b[l] || (b[l] =-->
+                <!--function () {-->
+                    <!--(b[l].q = b[l].q || []).push(arguments)-->
+                <!--});-->
+        <!--b[l].l = +new Date;-->
+        <!--e = o.createElement(i);-->
+        <!--r = o.getElementsByTagName(i)[0];-->
+        <!--e.src = 'https://www.google-analytics.com/analytics.js';-->
+        <!--r.parentNode.insertBefore(e, r)-->
+    <!--}(window, document, 'script', 'ga'));-->
+    <!--ga('create', 'UA-65105803-1', 'auto');-->
+    <!--ga('send', 'pageview');-->
+<!--</script>-->
+
+<script>
+    var user_actions = [];
+
+    jQuery(document).ready(function($) {
+        user_actions.push(currentTime() + "main-page loaded: " + JSON.stringify(new UAParser().getResult()));
+        user_actions.push(currentTime() + "speechSynthesis: " + ('speechSynthesis' in window));
+        user_actions.push(currentTime() + "localStorage: " + ('localStorage' in window));
+        user_actions.push(currentTime() + "getStoredLoginUserId: " + getStoredLoginUserId());
+        user_actions.push(currentTime() + "screen: " + "DocWxDocH: [" + $(document).width() + "x" + $(document).height()
+            + "], WinWxWinH: [" + $(window).width() + "x" + $(window).height() + "].");
+
+//        jQuery(document).click(function(e) {
+//            setTimeout(function(){
+//                var elementTag = e.target.outerHTML;
+//                var userAction = elementTag.substring(0,elementTag.indexOf(">") + 1);
+//                userAction = removeAttr(userAction, "style=\"");
+//                userAction = removeAttr(userAction, "ng-if=\"");
+//                userAction = removeAttr(userAction, "ng-style=\"");
+//                userAction = removeAttr(userAction, "ng- style=\"");
+//                userAction = removeAttr(userAction, "type=\"");
+//
+//                userAction = removeAttr(userAction, "tooltip-placement=\"");
+//                userAction = removeAttr(userAction, "uib-tooltip=\"");
+//                userAction = removeAttr(userAction, "tooltip-append-to-body=\"");
+//
+//                // replace multiple whitespaces with single whitespace
+//                userAction = userAction.replace(/\s+/g, ' ');
+//
+//                user_actions.push(currentTime() + userAction);
+//            }, 10);
+//        });
+
+        setInterval(function () {
+            if (user_actions.length > 0) {
+                var current = moment();
+                var id = current.format('YYYY') + "-" + current.format('DDD');
+
+                $.ajax({
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: JSON.stringify({id: id, data: user_actions}),
+                    url: "/rest/stat/logged_user",
+                    headers: {
+                        'voc-version': appGlobals.vocVersion()
+                    }
+                });
+                user_actions = [];
+            }
+        }, 3000);
+    });
+
+    function removeAttr(text, attr) {
+        var startIndex = text.indexOf(attr);
+        if (startIndex === -1) {
+            return text;
+        }
+
+        var endIndex = text.indexOf("\"", startIndex + attr.length);
+        if (endIndex === -1) {
+            return text;
+        }
+
+        return text.substring(0, startIndex) + text.substring(endIndex + 1, text.length);
+    }
+
+    function getStoredLoginUserId() {
+        if (!('localStorage' in window)) {
+            return '';
+        }
+
+        var storedLoginUserId = localStorage.getItem('storedLoginUserId');
+        return storedLoginUserId;
+    }
+
+</script>
+</div>
+
+</body>
+</html>

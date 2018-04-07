@@ -1,0 +1,29 @@
+<div class="row text-center" style="margin-top: 10px;">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-10" style="background-color: #a9f2cb; padding-top: 3px; padding-bottom: 3px; border-radius: 4px; margin-left: 8px; margin-right: 8px;">
+        <div class="row">
+            <div class="col-sm-1" style="padding-left: 0; padding-right: 0"></div>
+            <div class="col-sm-10">
+
+                <span ng-if="isSingleWordAnswer()" class="input-lg text-center">
+                    <span style="word-wrap: break-word;">{{value}}</span>
+                    <say-text text="value" lang="{{lang}}"></say-text>
+                </span>
+
+                <span ng-if="!isSingleWordAnswer()" class="input-lg text-center">
+                    <span ng-if="!showMoreWords(values[0])">
+                        <span style="word-wrap: break-word;">{{values[0].toUpperCase()}}</span>&nbsp;<say-text text="values[0]" lang="{{lang}}"></say-text>
+                        <span style="font-size: 11px; font-weight: bold; cursor: pointer; color: #23527c" ng-if="values.length > 1" ng-click="setFlagForShowMoreWords(values[0])">Еще</span>
+                    </span>
+                    <span ng-if="showMoreWords(values[0])" ng-repeat="iValue in values track by $index">
+                        {{$index + 1}}. <span style="word-wrap: break-word;">{{iValue.toUpperCase()}}</span>&nbsp;<say-text text="iValue" lang="{{lang}}"></say-text>&nbsp;&nbsp;
+                    </span>
+                </span>
+            </div>
+            <div class="col-sm-1" style="padding-left: 0; padding-right: 0"></div>
+        </div>
+    </div>
+    <div class="col-sm-1">
+    </div>
+</div>
